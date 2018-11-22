@@ -1,0 +1,25 @@
+name: ArtEsentials
+version: 0.0.1
+main: net.dev.art.essentials.Main
+author: arturpttp
+
+commands:
+  gm: 
+  kits:
+  aviso:
+  anuncio:
+  clear:
+  fly:
+  #tell:
+  heal:
+  staff:
+  duvidas:
+  rename:
+  relore:
+  build:
+  setspawn:
+  spawn:
+  mundo:
+  online:
+  warp:
+  casa:

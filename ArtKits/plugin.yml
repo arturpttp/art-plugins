@@ -1,0 +1,8 @@
+name: ArtKits
+version: 0.0.1
+main: net.dev.art.kits.Main
+author: arturpttp
+
+commands:
+  kit:
+  

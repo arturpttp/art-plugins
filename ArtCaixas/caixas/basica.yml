@@ -1,0 +1,12 @@
+box_name: '&6Caixa&b BASICA'
+box_id: 54
+box_data: 0
+
+Itens:
+  1:
+    Nome: '&aPeitoRal'
+    Lore:
+      - '&6=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-'
+      - '&eItem adquirido na caixa &bBasica!'
+      - '&6=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-'
+    ID: 16

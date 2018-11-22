@@ -1,0 +1,5 @@
+ManaRegen:
+  Rate: 1
+  Seconds: 5
+Clan:
+  MaxClanNameSize: 10 

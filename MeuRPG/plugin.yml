@@ -1,0 +1,9 @@
+name: MyRPG
+version: 1.0
+author: arturpttp
+
+main: net.dev.rpg.Main
+
+commands:
+  classe:
+

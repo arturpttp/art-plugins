@@ -1,0 +1,14 @@
+name: ArtAutenticador
+version: 0.0.1
+main: net.dev.art.aut.Main
+author: arturpttp
+
+commands:
+  autinfo:
+  login:
+    aliases: [logar]
+  register:
+    aliases: [registrar]
+  changepassword:
+    aliases: [trocarsenha]
+  

@@ -1,0 +1,8 @@
+name: ArtEncantamentos
+version: 0.0.1
+main: net.dev.art.enchants.Main
+author: arturpttp
+
+commands:
+  artencantar:
+  

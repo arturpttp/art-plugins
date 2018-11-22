@@ -1,0 +1,7 @@
+name: IsTags
+main: net.dev.art.tags.Main
+version: 0.0.1
+author: zArturDev_
+
+commands:
+	

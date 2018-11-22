@@ -1,0 +1,9 @@
+name: ArtTpa
+version: 0.0.1
+main: net.dev.art.tpa.Main
+author: arturpttp
+
+commands:
+  tpa:
+
+  

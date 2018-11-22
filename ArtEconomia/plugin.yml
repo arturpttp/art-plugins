@@ -1,0 +1,10 @@
+name: ArtEconomia
+version: 0.0.1
+main: net.dev.art.eco.Main
+author: arturpttp
+
+commands:
+  coins:
+    aliases: [money]
+  cash:
+  

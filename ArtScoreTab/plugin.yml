@@ -1,0 +1,7 @@
+name: ArtScoreTab
+version: 0.0.1
+main: net.dev.art.st.Main
+author: arturpttp
+
+commands:
+

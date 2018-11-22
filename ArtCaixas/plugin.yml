@@ -1,0 +1,8 @@
+name: ArtCaixas
+version: 0.0.1
+main: net.dev.art.cxs.Main
+author: arturpttp
+
+commands:
+  caixa:
+  

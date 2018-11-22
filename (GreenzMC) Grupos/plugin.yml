@@ -1,0 +1,8 @@
+name: GreenzGrupos
+version: 1.0
+author: arturpttp
+
+main: net.dev.green.grupos.Main
+
+commands:
+  setGrupo:

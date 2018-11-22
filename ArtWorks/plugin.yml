@@ -1,0 +1,8 @@
+name: ArtTrabalhos
+version: 0.0.1
+main: net.dev.art.trab.Main
+author: arturpttp
+
+commands:
+  trabalhonpc:
+  

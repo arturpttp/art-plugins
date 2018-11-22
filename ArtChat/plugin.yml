@@ -1,0 +1,12 @@
+name: ArtChat
+version: 0.0.1
+main: net.dev.art.chat.Main
+author: arturpttp
+
+commands:
+  sc:
+    aliases: [staffchat,staff]
+  g:
+  chat:
+  tell:
+  

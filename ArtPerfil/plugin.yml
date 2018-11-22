@@ -1,0 +1,8 @@
+name: ArtPerfil
+version: 0.0.1
+main: net.dev.art.profile.Main
+author: arturpttp
+
+commands:
+  perfil:
+    aliases: [profile]

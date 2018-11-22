@@ -1,0 +1,7 @@
+name: ArtTemplate
+version: 0.0.1
+main: net.dev.art.temp.Main
+author: arturpttp
+
+commands:
+  spawner:  

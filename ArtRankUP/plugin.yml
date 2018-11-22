@@ -1,0 +1,10 @@
+name: ArtRankUP
+version: 0.0.1
+main: net.dev.art.rank.Main
+author: arturpttp
+
+commands:
+  rankup:
+  rankupnpc:
+  setrank:
+  

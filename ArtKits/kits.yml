@@ -1,0 +1,16 @@
+#grupos = membro(TODOS), vip(TODOS-MEMBRO), staff(STAFFS+YT), 
+#staffelite(Diretor, Dono, Gerente, Moderador)
+
+# Basico:
+#   Tempo: dalay em (aqui é os minutos *60) 
+#   Grupo: 'grupos'
+#   Itens:
+#     - 'id,nome,encantamento,qunatidade,descrição'
+
+Kits:
+  Basico:
+    Tempo: 300 
+    Grupo: 'membro'
+    Itens:
+      - '1;&aPedra Basica;null;32;&aItem Do Kit Basico'
+Delay:

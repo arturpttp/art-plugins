@@ -1,0 +1,8 @@
+name: ArtScreenShare
+main: net.dev.art.screen.Main
+version: 0.0.1
+author: zArturDev_
+
+commands:
+  ss:
+    aliases: [screenshar,telar,pedirtela]

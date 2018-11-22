@@ -1,0 +1,10 @@
+name: ArtPunir
+version: 0.0.1
+main: net.dev.art.punir.Main
+author: arturpttp
+
+commands:
+  kickar:
+  punir:
+  desmutar:
+  desbanir:

@@ -1,0 +1,9 @@
+name: ArtUtils
+version: 0.0.1
+main: net.dev.art.utils.Main
+author: arturpttp
+
+commands:
+  clearlagg:
+  reiniciar:
+  admin:

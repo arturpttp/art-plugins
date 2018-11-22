@@ -1,0 +1,8 @@
+name: ArtMaquinas
+version: 0.0.1
+main: net.dev.art.maquinas.Main
+author: arturpttp
+
+commands:
+
+  

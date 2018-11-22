@@ -1,0 +1,6 @@
+MySQL:
+  username: 'root'
+  host: localhost
+  password: ''
+  database: 'artplugins'
+  

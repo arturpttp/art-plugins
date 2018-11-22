@@ -1,0 +1,8 @@
+name: ArtMina
+version: 0.0.1
+main: net.dev.art.mina.Main
+author: arturpttp
+
+commands:
+  mina:
+

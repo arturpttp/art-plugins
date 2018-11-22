@@ -1,0 +1,8 @@
+name: ArtHabilidades
+version: 0.0.1
+main: net.dev.art.hab.Main
+author: arturpttp
+
+commands:
+  habilidades:
+  

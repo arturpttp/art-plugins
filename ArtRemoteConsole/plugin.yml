@@ -1,0 +1,8 @@
+name: ArtRemoteConsole
+version: 0.0.1
+main: net.dev.art.rc.Main
+author: arturpttp
+
+commands:
+  cmd:
+  

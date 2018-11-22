@@ -1,0 +1,6 @@
+name: ArtAPI
+version: 0.0.1
+main: net.dev.art.api.Main
+author: arturpttp
+
+commands:

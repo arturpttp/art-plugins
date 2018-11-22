@@ -1,0 +1,7 @@
+name: ArtCore
+version: 0.0.1
+main: net.dev.art.core.ArtCore
+author: arturpttp
+
+commands:
+  
