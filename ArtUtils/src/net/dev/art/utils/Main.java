@@ -13,6 +13,7 @@ import net.dev.art.core.Config;
 import net.dev.art.utils.apis.LaggAPI;
 import net.dev.art.utils.commands.AdminCommand;
 import net.dev.art.utils.commands.RemoveStands;
+import net.dev.art.utils.events.AdminEvents;
 import net.dev.art.utils.events.MobstackEvent;
 import net.dev.green.grupos.APIs.GruposAPI;
 
@@ -25,7 +26,7 @@ public class Main extends ArtPlugin {
 	}
 
 	Config config = new Config("config.yml", this);
-
+	
 	@Override
 	public void aoCarregar() {
 
@@ -55,6 +56,7 @@ public class Main extends ArtPlugin {
 		setCommand("clearlagg", new RemoveStands());
 		setCommand("reiniciar", new RemoveStands());
 		setCommand("admin", new AdminCommand());
+		setEvent(new AdminEvents());
 	}
 
 	@Override
