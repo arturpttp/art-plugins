@@ -26,7 +26,7 @@ public class Main extends ArtPlugin {
 	}
 
 	Config config = new Config("config.yml", this);
-	
+
 	@Override
 	public void aoCarregar() {
 
@@ -41,7 +41,8 @@ public class Main extends ArtPlugin {
 			public void run() {
 				LaggAPI.anuncio(5);
 			}
-		}, 20*60*10, 20*10*60);
+		}, 20 * 60 * 10, 20 * 10 * 60);
+
 	}
 
 	@Override

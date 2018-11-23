@@ -6,6 +6,8 @@ import org.bukkit.entity.Player;
 
 public interface ArtLib {
 
+	public boolean debug = true;
+
 	public default void broadcast(String broadcast) {
 		Bukkit.broadcastMessage(broadcast);
 	}
@@ -14,7 +16,17 @@ public interface ArtLib {
 		Bukkit.getConsoleSender().sendMessage(msg);
 	}
 
-	public default void mensagem(Player p, String msg) {
+	public default void debug(String msg) {
+		if (debug) {
+			console("§a[DEBUG] §8» §e" + msg);
+		}
+	}
+
+	public default void console(String msg) {
+		Bukkit.getConsoleSender().sendMessage(msg);
+	}
+
+	public default void mensagem(CommandSender p, String msg) {
 		p.sendMessage(msg);
 	}
 

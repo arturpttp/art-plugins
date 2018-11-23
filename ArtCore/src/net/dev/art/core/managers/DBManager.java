@@ -1,4 +1,4 @@
-package net.dev.art.core;
+package net.dev.art.core.managers;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,6 +15,8 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+
+import net.dev.art.core.Extra;
 
 public class DBManager {
 
