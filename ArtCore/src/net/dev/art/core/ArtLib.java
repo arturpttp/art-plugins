@@ -4,12 +4,34 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import net.dev.art.core.utils.Mine;
+
 public interface ArtLib {
 
 	public boolean debug = true;
 
 	public default void broadcast(String broadcast) {
 		Bukkit.broadcastMessage(broadcast);
+	}
+
+	public default void broadcast(String broadcast, CommandSender cantrecieve, String permission) {
+		for (Player p : Mine.getPlayers()) {
+			if (!p.hasPermission(permission)) {
+				return;
+			}
+			if (p == cantrecieve)
+				return;
+			p.sendMessage(broadcast);
+		}
+	}
+	
+	public default void broadcast(String broadcast, String permission) {
+		for (Player p : Mine.getPlayers()) {
+			if (!p.hasPermission(permission)) {
+				return;
+			}
+			p.sendMessage(broadcast);
+		}
 	}
 
 	public default void mensagem(String msg) {

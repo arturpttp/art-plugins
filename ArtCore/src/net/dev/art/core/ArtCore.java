@@ -42,20 +42,6 @@ public class ArtCore extends ArtPlugin {
 		sql.ativarDebug();
 	}
 
-	public void reload() {
-		debug("§cDesligando Plugin §bArtCore");
-		aoDisabilitar();
-
-		new BukkitRunnable() {
-			public void run() {
-				debug("Habilitando Plugin §bArtCore");
-				aoCarregar();
-				aoIniciar();
-			}
-		}.runTaskTimer(instance, 20 * 3, 20 * 3);
-
-	}
-
 	@Override
 	public void aoDisabilitar() {
 		stopMysql();

@@ -14,7 +14,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public abstract class ArtPlugin extends JavaPlugin implements Listener,ArtLib {
+public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 
 	public ConsoleCommandSender send = Bukkit.getConsoleSender();
 
@@ -41,6 +41,22 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener,ArtLib {
 		aoCarregar();
 	}
 
+	public void reload(JavaPlugin pl) {
+		String name = "";
+		try {
+			name = pl.getDescription().getName();
+		} catch (Exception e) {
+			name = "ArtPlugin";
+		}
+		debug("§cDesligando Plugin §b" + name);
+		aoDisabilitar();
+
+		debug("Habilitando Plugin §b" + name);
+		aoCarregar();
+		aoIniciar();
+
+	}
+
 	@Override
 	public void onEnable() {
 		APIsManager = new APIsManager(this);
@@ -60,7 +76,7 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener,ArtLib {
 	}
 
 	public abstract String getPrefix();
-	
+
 	public abstract void aoCarregar();
 
 	public abstract void aoIniciar();

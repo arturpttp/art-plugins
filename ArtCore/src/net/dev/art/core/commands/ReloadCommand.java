@@ -14,17 +14,24 @@ import net.dev.art.core.managers.CommandManager;
 
 public class ReloadCommand implements CommandExecutor, ArtLib {
 
+	ArtPlugin pl;
+
 	public ReloadCommand(ArtPlugin pl) {
+		this.pl = pl;
 		pl.setCommand("artreload", this);
-		pl.getCommand("artreload").setAliases(Arrays.asList("artrl", "reloadart", "rlart"));
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lb, String[] args) {
 		if (sender.hasPermission("reload.art")) {
-			mensagem(sender, "§aPlugin sendo recarregado.");
-			ArtCore.getInstance().reload();
-			mensagem(sender, "§aPlugin recarregado.");
+			broadcast("§7(" + sender.getName()
+					+ ")§8 » §cRecarrendo plugin §bArtCore §cnão feche o servidor. esse comando pode causar lag!",
+					sender, "recive.artreload");
+			mensagem(sender, "§7(" + sender.getName()
+					+ ")§8 » §cRecarrendo plugin §bArtCore §cnão feche o servidor. esse comando pode causar lag!");
+			ArtCore.getInstance().reload(ArtCore.getInstance());
+			broadcast("§7(" + sender.getName() + ")§8 » §aRecarregamento completo.", sender, "recive.artreload");
+			mensagem(sender, "§7(" + sender.getName() + ")§8 » §aRecarregamento completo.");
 		}
 		return false;
 	}

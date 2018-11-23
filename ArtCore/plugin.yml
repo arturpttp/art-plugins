@@ -5,3 +5,4 @@ author: arturpttp
 
 commands:
   artreload:
+    aliases: [artrl,reloadart,rlart]
