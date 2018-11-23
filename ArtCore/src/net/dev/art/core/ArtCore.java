@@ -2,6 +2,8 @@ package net.dev.art.core;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
+import net.dev.art.core.commands.ReloadCommand;
+
 public class ArtCore extends ArtPlugin {
 
 	public static ArtCore instance;
@@ -26,6 +28,7 @@ public class ArtCore extends ArtPlugin {
 		cf = new Config("config.yml", this);
 		cf.saveDefaultConfig();
 		startMysql();
+		new ReloadCommand(instance);
 	}
 
 	private void startMysql() {
