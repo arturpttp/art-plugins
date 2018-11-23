@@ -59,41 +59,43 @@ public class AdminEvents implements Listener, ArtLib {
 		}
 		Player t = (Player) e.getRightClicked();
 		Player p = e.getPlayer();
+		if (!AdminAPI.admins.contains(p)) {
+			return;
+		}
 		String dname = "";
 		if (p.getItemInHand().getType() != Material.AIR || p.getItemInHand() != null) {
 			dname = p.getItemInHand().getItemMeta().getDisplayName();
 		}
 
-		if (AdminAPI.admins.contains(p)) {
-			if (dname.equalsIgnoreCase("§ePrender Jogador")) {
-				if (AdminAPI.presos.contains(t)) {
-					AdminAPI.removePrison(t);
-					p.sendMessage("§aVocê liberou §8» §f" + t.getName());
-					t.sendMessage("§f" + p.getName() + " §aliberou você da avaliação");
-				} else {
-					AdminAPI.prison(t);
-					p.sendMessage("§cVocê prendeu §8» §f" + t.getName());
-					t.sendMessage("§f" + p.getName() + " §cPrendeu você para avaliação");
-				}
-
-			} else if (dname.equalsIgnoreCase("§eInformações do Jogador")) {
-				AdminAPI.sendInfos(p, t);
-			} else if (dname.equalsIgnoreCase("§eTeste De: §bAuto-Soup")) {
-				AdminAPI.AutoSoup(p, t);
-			} else if (dname.equalsIgnoreCase("§eTeste De: §bKill Aura")) {
-
-			} else if (dname.equalsIgnoreCase("§eTeste De: §bKnockback")) {
-
-			} else if (dname.equalsIgnoreCase("§eTroca Rapida")) {
-
-			} else if (dname.equalsIgnoreCase("§eCrashar jogador")) {
-
-			} else if (dname.equalsIgnoreCase("§eTeste De: §bNoFall")) {
-
+		if (dname.equalsIgnoreCase("§ePrender Jogador")) {
+			if (AdminAPI.presos.contains(t)) {
+				AdminAPI.removePrison(t);
+				p.sendMessage("§aVocê liberou §8» §f" + t.getName());
+				t.sendMessage("§f" + p.getName() + " §aliberou você da avaliação");
 			} else {
-				p.openInventory(t.getInventory());
+				AdminAPI.prison(t);
+				p.sendMessage("§cVocê prendeu §8» §f" + t.getName());
+				t.sendMessage("§f" + p.getName() + " §cPrendeu você para avaliação");
 			}
+
+		} else if (dname.equalsIgnoreCase("§eInformações do Jogador")) {
+			AdminAPI.sendInfos(p, t);
+		} else if (dname.equalsIgnoreCase("§eTeste De: §bAuto-Soup")) {
+			AdminAPI.AutoSoup(p, t);
+		} else if (dname.equalsIgnoreCase("§eTeste De: §bKill Aura")) {
+
+		} else if (dname.equalsIgnoreCase("§eTeste De: §bKnockback")) {
+
+		} else if (dname.equalsIgnoreCase("§eTroca Rapida")) {
+
+		} else if (dname.equalsIgnoreCase("§eCrashar jogador")) {
+
+		} else if (dname.equalsIgnoreCase("§eTeste De: §bNoFall")) {
+
+		} else {
+			p.openInventory(t.getInventory());
 		}
+
 	}
 
 }
