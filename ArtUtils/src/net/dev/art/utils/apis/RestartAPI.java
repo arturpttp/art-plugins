@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import net.dev.art.core.ActionBar;
+import net.dev.art.core.objects.ActionBar;
 import net.dev.art.utils.Main;
 
 public class RestartAPI {

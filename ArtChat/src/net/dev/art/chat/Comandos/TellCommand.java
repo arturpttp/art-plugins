@@ -7,14 +7,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import net.dev.art.chat.APIs.ChatAPI;
-import net.dev.art.core.ArtLib;
-import net.dev.art.rank.RanksAPI;
+import net.dev.art.core.utils.ArtLib;
 import net.dev.green.grupos.APIs.GruposAPI;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ClickEvent.Action;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.ClickEvent.Action;
 
 public class TellCommand implements CommandExecutor, ArtLib {
 

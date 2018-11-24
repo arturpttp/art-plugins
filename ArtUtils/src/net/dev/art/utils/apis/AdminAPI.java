@@ -1,9 +1,7 @@
 package net.dev.art.utils.apis;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -19,8 +17,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import net.dev.art.core.ArtItem;
-import net.dev.art.core.ArtPlayer;
+import net.dev.art.core.objects.ArtItem;
+import net.dev.art.core.objects.ArtPlayer;
 import net.dev.art.utils.Main;
 import net.dev.green.grupos.APIs.GruposAPI;
 

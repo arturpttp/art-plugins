@@ -1,10 +1,7 @@
 package net.dev.art.trab;
 
-import org.bukkit.entity.Player;
-
-import net.dev.art.api.APIs.CooldownAPI;
 import net.dev.art.core.ArtPlugin;
-import net.dev.art.core.Config;
+import net.dev.art.core.objects.Config;
 
 public class Main extends ArtPlugin {
 

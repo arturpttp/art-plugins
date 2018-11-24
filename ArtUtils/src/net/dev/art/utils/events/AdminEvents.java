@@ -4,17 +4,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
-import net.dev.art.core.ArtLib;
+import net.dev.art.core.utils.ArtLib;
+import net.dev.art.utils.Main;
 import net.dev.art.utils.apis.AdminAPI;
 
 public class AdminEvents implements Listener, ArtLib {
+
+	@EventHandler
+	public void onDrop(EntitySpawnEvent e) {
+		if (e.getEntity() instanceof Item) {
+			Item item = (Item) e.getEntity();
+
+			Main.getInstance().getServer().getScheduler().scheduleAsyncRepeatingTask(Main.getInstance(),
+					new BukkitRunnable() {
+
+						@Override
+						public void run() {
+							String name = "§b" + item.getItemStack().getType().toString().replace("_", " ") + " §e"
+									+ item.getItemStack().getAmount();
+							item.setCustomName(name);
+
+						}
+					}, 5, 5);
+			item.setCustomNameVisible(true);
+
+		}
+	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onCommandPreProcess(PlayerCommandPreprocessEvent e) {

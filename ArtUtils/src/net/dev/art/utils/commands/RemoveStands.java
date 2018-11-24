@@ -1,16 +1,10 @@
 package net.dev.art.utils.commands;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import net.dev.art.core.ActionBar;
-import net.dev.art.utils.Main;
 import net.dev.art.utils.apis.LaggAPI;
 import net.dev.art.utils.apis.RestartAPI;
 import net.dev.art.utils.utils.Mensagens;

@@ -1,15 +1,13 @@
 package net.dev.art.utils;
 
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import net.dev.art.core.ArtItem;
-import net.dev.art.core.ArtPlayer;
 import net.dev.art.core.ArtPlugin;
-import net.dev.art.core.Config;
+import net.dev.art.core.objects.ArtPlayer;
+import net.dev.art.core.objects.Config;
 import net.dev.art.utils.apis.LaggAPI;
 import net.dev.art.utils.commands.AdminCommand;
 import net.dev.art.utils.commands.RemoveStands;

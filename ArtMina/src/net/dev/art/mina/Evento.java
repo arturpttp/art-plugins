@@ -16,7 +16,7 @@ import org.bukkit.material.Dye;
 
 import net.dev.art.api.APIs.ItemsAPI;
 import net.dev.art.api.APIs.TitleAPI;
-import net.dev.art.core.ArtItem;
+import net.dev.art.core.objects.ArtItem;
 
 public class Evento implements Listener {
 

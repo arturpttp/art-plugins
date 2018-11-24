@@ -3,6 +3,8 @@ package net.dev.art.core;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import net.dev.art.core.commands.ReloadCommand;
+import net.dev.art.core.objects.ArtSQL;
+import net.dev.art.core.objects.Config;
 
 public class ArtCore extends ArtPlugin {
 
@@ -37,9 +39,7 @@ public class ArtCore extends ArtPlugin {
 	}
 
 	private void stopMysql() {
-		sql = new ArtSQL();
 		sql.close();
-		sql.ativarDebug();
 	}
 
 	@Override

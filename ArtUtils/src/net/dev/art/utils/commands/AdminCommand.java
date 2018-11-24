@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import net.dev.art.core.ArtLib;
+import net.dev.art.core.utils.ArtLib;
 import net.dev.art.utils.apis.AdminAPI;
 
 public class AdminCommand implements CommandExecutor, ArtLib {

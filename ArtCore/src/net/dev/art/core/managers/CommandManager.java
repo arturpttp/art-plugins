@@ -14,7 +14,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.plugin.Plugin;
 
-import net.dev.art.core.ArtLib;
+import net.dev.art.core.utils.ArtLib;
 import net.dev.art.core.utils.Mine;
 import net.dev.art.core.utils.Reference;
 

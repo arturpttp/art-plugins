@@ -5,7 +5,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 
-import net.dev.art.core.ActionBar;
+import net.dev.art.core.objects.ActionBar;
 import net.dev.art.utils.Main;
 
 public class LaggAPI {

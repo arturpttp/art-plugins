@@ -16,7 +16,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 
-import net.dev.art.core.Extra;
+import net.dev.art.core.utils.Extra;
 
 public class DBManager {
 

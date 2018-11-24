@@ -17,8 +17,6 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import net.dev.art.core.Extra;
-
 public class Mine {
 
 	private static Map<String, String> replacers = new LinkedHashMap<>();

@@ -8,9 +8,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 
 import net.dev.art.core.ArtCore;
-import net.dev.art.core.ArtLib;
 import net.dev.art.core.ArtPlugin;
 import net.dev.art.core.managers.CommandManager;
+import net.dev.art.core.utils.ArtLib;
 
 public class ReloadCommand implements CommandExecutor, ArtLib {
 

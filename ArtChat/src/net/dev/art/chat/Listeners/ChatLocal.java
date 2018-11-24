@@ -9,13 +9,12 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import net.dev.art.api.APIs.CalendarioAPI;
 import net.dev.art.chat.APIs.ChatAPI;
-import net.dev.art.core.ArtPlayer;
+import net.dev.art.core.objects.ArtPlayer;
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
 import net.dev.art.punir.PunimentosAPI;
 import net.dev.art.rank.RanksAPI;
 import net.dev.green.grupos.APIs.GruposAPI;
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ClickEvent.Action;

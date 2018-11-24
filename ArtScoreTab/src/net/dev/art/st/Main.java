@@ -10,6 +10,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import net.dev.art.api.APIs.FormatarAPI;
+import net.dev.art.core.objects.ArtPlayer;
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
 import net.dev.art.rank.Rank;
