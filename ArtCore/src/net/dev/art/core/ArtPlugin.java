@@ -8,14 +8,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.dev.art.core.managers.ArtCommand;
 import net.dev.art.core.utils.APIsManager;
 import net.dev.art.core.utils.ArtLib;
+import net.dev.art.core.utils.ClassGetter;
 
 public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 
@@ -76,6 +79,30 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 				+ instance.getDescription().getAuthors().toString().replace("[", "").replace("]", ""));
 		send.sendMessage("§eVersao: §b§l" + instance.getDescription().getVersion());
 		send.sendMessage("");
+	}
+
+	public void autoRegister(JavaPlugin pl, String pacote) {
+		for (Class<?> classes : ClassGetter.getClassesForPackage(pl, pacote)) {
+			try {
+				if (Listener.class.isAssignableFrom(classes)) {
+					Listener classe = (Listener) classes.newInstance();
+					Bukkit.getPluginManager().registerEvents(classe, pl);
+					console(getPrefix() + "§eCarregando listener: " + classes.getSimpleName());
+				}
+			} catch (Exception e) {
+				console(getPrefix() + "§cErro ao carregar listener: " + classes.getSimpleName());
+			}
+			try {
+				if (ArtCommand.class.isAssignableFrom(classes) && classes != ArtCommand.class) {
+					ArtCommand command = (ArtCommand) classes.newInstance();
+					((CraftServer) Bukkit.getServer()).getCommandMap().register(command.getName(), command);
+					console(getPrefix() + "§eCarregando comando: §b" + command.getName() + " §eNa classe:§b "
+							+ classes.getSimpleName());
+				}
+			} catch (Exception e) {
+				console(getPrefix() + "§cErro ao carregar Classe de comando: " + classes.getSimpleName());
+			}
+		}
 	}
 
 	public abstract String getPrefix();

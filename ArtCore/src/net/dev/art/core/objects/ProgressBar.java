@@ -9,7 +9,7 @@ public class ProgressBar {
 	String character = "|";
 	String HasColor = "§a";
 	String NeedColor = "§c";
-	int totalBars=10;
+	int totalBars = 10;
 
 	public double getHaved() {
 		return haved;
@@ -53,6 +53,29 @@ public class ProgressBar {
 		}
 		return sb.toString();
 
+	}
+
+	public String getProgressBar() {
+		int n = (int) getHaved();
+		if (n >= getMax()) {
+			return ChatColor.translateAlternateColorCodes('&', "§a/rankup");
+		}
+		int n2 = 0;
+		if (n > 0) {
+			n2 = (int) (n / (getMax() / 10));
+		}
+		final StringBuilder sb = new StringBuilder(String.valueOf("§c") + "");
+		if (n2 > 0) {
+			sb.append("§a");
+		}
+		for (int i = 0; i < 10; ++i) {
+			if (i == n2) {
+				sb.append("§c");
+			}
+			sb.append("|");
+		}
+		sb.append(String.valueOf("") + "");
+		return ChatColor.translateAlternateColorCodes('&', sb.toString());
 	}
 
 }

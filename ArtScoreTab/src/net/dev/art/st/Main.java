@@ -101,7 +101,7 @@ public class Main extends JavaPlugin {
 		String rankname = rank.getPrefix().replace("&", "§");
 		String barra = "";
 		try {
-			barra = new ProgressBar(CoinsAPI.getCoins(p), nextrank.getPrice()).getPorcetagem();
+			barra = new ProgressBar(CoinsAPI.getCoins(p), nextrank.getPrice()).getProgressBar();
 		} catch (Exception e) {
 			barra = "§7Você já está no ultimo rank";
 		}
