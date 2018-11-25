@@ -1,0 +1,9 @@
+name: ArtShop
+version: 0.0.1
+main: net.dev.art.shop.Main
+author: arturpttp
+
+commands:
+  artshopreload:
+    aliases: [artshoprl,shoprl]
+  shop:
