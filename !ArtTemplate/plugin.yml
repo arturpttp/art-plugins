@@ -4,5 +4,5 @@ main: net.dev.art.temp.Main
 author: arturpttp
 
 commands:
-  cmd:
-  
+  arttemplatereload:
+    aliases: [arttemplaterl,templaterl]

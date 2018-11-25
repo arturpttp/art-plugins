@@ -35,7 +35,7 @@ public class Main extends ArtPlugin {
 
 	@Override
 	public void Register() {
-		setCommand("cmd", new CommandTemplate());
+		setCommand("arttemplatereload", new ReloadCommand());
 	}
 
 	@Override

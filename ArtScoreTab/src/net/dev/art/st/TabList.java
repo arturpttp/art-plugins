@@ -10,9 +10,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
+import net.dev.art.core.utils.Mine;
 import net.dev.green.grupos.APIs.GruposAPI;
 import net.dev.green.grupos.APIs.GruposAPI.GruposTipos;
 import net.minecraft.server.v1_8_R3.ChatComponentText;
+import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerListHeaderFooter;
 
 public class TabList {
@@ -30,6 +32,24 @@ public class TabList {
 
 	public String getFooter() {
 		return footer;
+	}
+
+	public void sendTab() {
+		String header = getHeader();
+		String footer = getFooter();
+		try {
+			PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter(
+					IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + header + "\"}"));
+			Field field = packet.getClass().getDeclaredField("b");
+			field.setAccessible(true);
+			field.set(packet, IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + footer + "\"}"));
+			for (Player p : Mine.getPlayers()) {
+				((CraftPlayer) p).getHandle().playerConnection.sendPacket(packet);
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public void send() {
