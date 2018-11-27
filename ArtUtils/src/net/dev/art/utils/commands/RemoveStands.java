@@ -5,10 +5,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import net.dev.art.grupos.api.GruposAPI;
 import net.dev.art.utils.apis.LaggAPI;
 import net.dev.art.utils.apis.RestartAPI;
 import net.dev.art.utils.utils.Mensagens;
-import net.dev.green.grupos.APIs.GruposAPI;
 
 public class RemoveStands extends Mensagens implements CommandExecutor {
 
@@ -19,13 +19,13 @@ public class RemoveStands extends Mensagens implements CommandExecutor {
 		}
 		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("clearlagg")) {
-			if (!(GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) > 2)) {
+			if (!(GruposAPI.hasPermission(p, "dono"))) {
 				return true;
 			}
 			mensagem(p, "§eIniciando ClearLagg!");
 			LaggAPI.anuncio(5);
 		} else if (cmd.getName().equalsIgnoreCase("reiniciar")) {
-			if (!(GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) > 2)) {
+			if (!(GruposAPI.hasPermission(p, "dono"))) {
 				return true;
 			}
 			mensagem(p, "§eReiniciamento Começãndo!");

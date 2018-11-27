@@ -10,15 +10,12 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import net.dev.art.api.APIs.FormatarAPI;
-import net.dev.art.core.objects.ArtPlayer;
 import net.dev.art.core.objects.ProgressBar;
-import net.dev.art.core.utils.API;
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
+import net.dev.art.grupos.api.GruposAPI;
 import net.dev.art.rank.Rank;
 import net.dev.art.rank.RanksAPI;
-import net.dev.green.grupos.APIs.GruposAPI;
 
 public class Main extends JavaPlugin {
 
@@ -100,16 +97,16 @@ public class Main extends JavaPlugin {
 		Rank nextrank = RanksAPI.getNextRank(p.getName());
 		String rankname = rank.getPrefix().replace("&", "§");
 		String barra = "";
-		try {
+		if (nextrank != null) {
 			barra = new ProgressBar(CoinsAPI.getCoins(p), nextrank.getPrice()).getProgressBar();
-		} catch (Exception e) {
-			barra = "§7Você já está no ultimo rank";
+		} else {
+			barra = "§7Nenhum";
 		}
 
 		b.definirLinha("§bNick: §e" + p.getName(), 15);
 		b.definirLinha("§bRank: " + rankname, 14);
 		b.definirLinha("§bProgresso: §b" + barra, 13);
-		b.definirLinha("§bGrupo: " + GruposAPI.getPrefix(p), 12);
+		b.definirLinha("§bGrupo: " + GruposAPI.getGrupo(p.getName()).getPrefix(), 12);
 		b.definirLinha("§1  ", 11);
 		b.definirLinha("§bCoins: §e" + CoinsAPI.getCoinsFormatado(p), 10);
 		b.definirLinha("§bCash: §e" + CashAPI.getCashFormatado(p), 9);

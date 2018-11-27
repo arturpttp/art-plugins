@@ -14,6 +14,8 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.google.api.services.translate.Translate;
+
 import net.dev.art.core.utils.ArtLib;
 import net.dev.art.utils.Main;
 import net.dev.art.utils.apis.AdminAPI;

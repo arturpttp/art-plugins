@@ -11,7 +11,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import net.dev.art.essentials.Main;
 import net.dev.art.essentials.objetos.Warp;
 import net.dev.art.essentials.utils.Mensagens;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.grupos.api.GruposAPI;
 
 public class WarpCommand extends Mensagens implements CommandExecutor {
 
@@ -25,7 +25,7 @@ public class WarpCommand extends Mensagens implements CommandExecutor {
 		if (cmd.getName().equalsIgnoreCase("warp")) {
 			if (args.length == 0) {
 				mensagem(p, "§e/warp §6(Nome)§7 » §bTeleportar-se até uma WARP existente!");
-				if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) > 2) {
+				if (GruposAPI.getGrupo(p.getName()).getPermissions().contains("dono")) {
 					mensagem(p, "§e/warp setar §6(Nome)§7 » §bCriar uma WARP!");
 					mensagem(p, "§e/warp deletar §6(Nome)§7 » §bdeletar uma WARP existente!");
 				}

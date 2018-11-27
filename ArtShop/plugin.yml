@@ -4,6 +4,4 @@ main: net.dev.art.shop.Main
 author: arturpttp
 
 commands:
-  artshopreload:
-    aliases: [artshoprl,shoprl]
-  shop:
+

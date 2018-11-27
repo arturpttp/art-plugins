@@ -10,15 +10,14 @@ import org.bukkit.entity.Player;
 import net.dev.art.api.APIs.FormatarAPI;
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
-import net.dev.art.eco.apis.EconomiaAPI;
 import net.dev.art.eco.utils.Mensagens;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.grupos.api.GruposAPI;
 
 @SuppressWarnings("all")
 public class CashCommand extends Mensagens implements CommandExecutor {
 
 	public static boolean hasPermission(Player p) {
-		if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) >= 3)
+		if (GruposAPI.hasPermission(p, "dono"))
 			return true;
 		else
 			return false;

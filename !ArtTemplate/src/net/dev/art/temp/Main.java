@@ -7,6 +7,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import net.dev.art.core.ArtPlugin;
 
@@ -26,6 +27,7 @@ public class Main extends ArtPlugin {
 	@Override
 	public void aoIniciar() {
 		instance = this;
+		autoRegister(instance, "net.dev.art.temp");
 	}
 
 	@Override
@@ -35,13 +37,25 @@ public class Main extends ArtPlugin {
 
 	@Override
 	public void Register() {
-		setCommand("arttemplatereload", new ReloadCommand());
+	}
+
+	public void reload() {
+		debug("§aRecarregando plugin §bArtTemplate");
+		aoDisabilitar();
+
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				aoCarregar();
+				aoIniciar();
+			}
+		}.runTaskTimer(this, 5, 5);
+		debug("§aCarregamento do plugin §bArtTemplate§a Completo");
 	}
 
 	@Override
 	public String getPrefix() {
-		// TODO Auto-generated method stub
-		return null;
+		return "§bArtTemplate §8» ";
 	}
 
 }

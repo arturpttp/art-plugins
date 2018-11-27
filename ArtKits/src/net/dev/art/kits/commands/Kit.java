@@ -1,12 +1,8 @@
 package net.dev.art.kits.commands;
 
-import java.util.concurrent.TimeUnit;
-
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import net.dev.art.api.APIs.API;
@@ -14,8 +10,6 @@ import net.dev.art.api.APIs.CalendarioAPI;
 import net.dev.art.kits.Main;
 import net.dev.art.kits.Mensagens;
 import net.dev.art.kits.apis.KitsAPI;
-import net.dev.green.grupos.APIs.GruposAPI;
-import net.dev.green.grupos.APIs.GruposAPI.GruposTipos;
 
 public class Kit extends Mensagens implements CommandExecutor {
 

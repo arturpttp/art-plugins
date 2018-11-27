@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/server.jar"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtAPI.jar"/>
-	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/GreenzGrupos.jar"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtPunir.jar"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/APIs/Citizens (1).jar"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtEconomia.jar"/>

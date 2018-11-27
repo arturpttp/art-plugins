@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import net.dev.art.chat.APIs.ChatAPI;
 import net.dev.art.core.utils.ArtLib;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.grupos.api.GruposAPI;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ClickEvent.Action;
@@ -31,7 +31,7 @@ public class TellCommand implements CommandExecutor, ArtLib {
 			count += 1;
 		}
 
-		String grupo = GruposAPI.getPrefix(p);
+		String grupo = GruposAPI.getGrupo(p.getName()).getPrefix();
 
 		TextComponent tc1 = new TextComponent("");
 		TextComponent tc = new TextComponent("");

@@ -14,8 +14,8 @@ import net.dev.art.api.APIs.Paginas;
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
 import net.dev.art.essentials.utils.Mensagens;
+import net.dev.art.grupos.api.GruposAPI;
 import net.dev.art.rank.RanksAPI;
-import net.dev.green.grupos.APIs.GruposAPI;
 
 public class Teste extends Mensagens implements CommandExecutor {
 
@@ -27,13 +27,13 @@ public class Teste extends Mensagens implements CommandExecutor {
 		}
 		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("online")) {
-			if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) > 2) {
+			if (GruposAPI.getGrupo(p.getName()).getPermissions().contains("dono")) {
 
 				ArrayList<ItemStack> items = new ArrayList<ItemStack>();
 
 				for (Player on : Bukkit.getOnlinePlayers()) {
 					String rank = RanksAPI.getCurrentRank(on).getPrefix().replace("&", "§");
-					String grupo = GruposAPI.getPrefix(on);
+					String grupo = GruposAPI.getGrupo(p.getName()).getPrefix();;
 					String cash = CashAPI.getCashFormatado(on);
 					String coin = CoinsAPI.getCoinsFormatado(on);
 					ItemStack item = ItemsAPI.head("§a" + on.getName(), on.getName(), "§eRank: " + rank,

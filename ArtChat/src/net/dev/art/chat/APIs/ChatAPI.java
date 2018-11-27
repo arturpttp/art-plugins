@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 
 import net.dev.art.api.APIs.TitleAPI;
 import net.dev.art.chat.Main;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.grupos.api.GruposAPI;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 
@@ -67,7 +67,7 @@ public class ChatAPI {
 	}
 
 	public static String mensagem(Player p, String mensagem) {
-		if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) > 0) {
+		if (GruposAPI.hasPermission(p, "dono")) {
 			return mensagem.replace("&", "§");
 		} else {
 			return mensagem;
@@ -76,7 +76,7 @@ public class ChatAPI {
 
 	public static void sendLocal(Player p, BaseComponent formato) {
 
-		String prefix = GruposAPI.getPrefix(p);
+		String prefix = GruposAPI.getGrupo(p.getName()).getPrefix();
 		String alone = "§cSem Players Perto De Você";
 		String s = "S";
 
@@ -109,7 +109,7 @@ public class ChatAPI {
 
 	public static void sendLocal(Player p, String formato) {
 
-		String prefix = GruposAPI.getPrefix(p);
+		String prefix = GruposAPI.getGrupo(p.getName()).getPrefix();
 		String alone = "§cSem Players Perto De Você";
 		String s = "S";
 
@@ -148,15 +148,15 @@ public class ChatAPI {
 
 	public static void sendStaff(String msg) {
 		for (Player ps : Bukkit.getOnlinePlayers()) {
-			if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(ps)) >= 3) {
+			if (GruposAPI.hasPermission(ps, "dono")) {
 				ps.sendMessage(msg);
 			}
 		}
 	}
-	
+
 	public static void sendStaff(TextComponent msg) {
 		for (Player ps : Bukkit.getOnlinePlayers()) {
-			if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(ps)) >= 3) {
+			if (GruposAPI.hasPermission(ps, "dono")) {
 				ps.spigot().sendMessage(msg);
 			}
 		}

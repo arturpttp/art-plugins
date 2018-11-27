@@ -11,8 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import net.dev.art.eco.utils.Mensagens;
+import net.dev.art.grupos.api.GruposAPI;
 import net.dev.art.profile.apis.ProfileAPI;
-import net.dev.green.grupos.APIs.GruposAPI;
 
 public class ProfileManger extends Mensagens implements CommandExecutor, Listener {
 
@@ -24,7 +24,7 @@ public class ProfileManger extends Mensagens implements CommandExecutor, Listene
 		}
 		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("perfil")) {
-			if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) < 3) {
+			if (GruposAPI.getGrupo(p.getName()).getPermissions().contains("dono")) {
 				p.sendMessage(NoPerm);
 				return true;
 			}

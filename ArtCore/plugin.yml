@@ -4,5 +4,4 @@ main: net.dev.art.core.ArtCore
 author: arturpttp
 
 commands:
-  artreload:
-    aliases: [artrl,reloadart,rlart]
+

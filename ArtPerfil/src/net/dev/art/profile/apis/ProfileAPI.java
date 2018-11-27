@@ -12,8 +12,7 @@ import net.dev.art.api.APIs.ItemsAPI;
 //import net.dev.art.aut.AutAPI;
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
-import net.dev.green.grupos.APIs.GruposAPI;
-import net.dev.green.grupos.APIs.GruposAPI.GruposTipos;
+import net.dev.art.grupos.api.GruposAPI;
 
 public class ProfileAPI {
 
@@ -89,9 +88,9 @@ public class ProfileAPI {
 
 	public static String getGrupo(String p) {
 		if (GruposAPI.getGrupo(p) == null) {
-			return GruposAPI.getPrefix(GruposAPI.getGrupoByName(GruposAPI.getGrupoName(GruposTipos.Membro)));
+			return GruposAPI.getGrupo(p).getPrefix();
 		} else {
-			return GruposAPI.getPrefix(GruposAPI.getGrupo(p));
+			return GruposAPI.getGrupo(p).getPrefix();
 		}
 	}
 

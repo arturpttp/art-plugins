@@ -21,7 +21,7 @@ public final class ConfigAPI {
 		this.file = new File(plugin.getDataFolder(), name);
 		if (!this.file.exists()) {
 			plugin.saveResource(name, false);
-			Bukkit.getConsoleSender().sendMessage(MensagensAPI.Tag + "§eCriando `" + name + "`");
+			Bukkit.getConsoleSender().sendMessage("§eCriando `" + name + "`");
 		}
 		this.file = new File(plugin.getDataFolder(), name );
 		this.config = YamlConfiguration.loadConfiguration(this.file);

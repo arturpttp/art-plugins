@@ -3,9 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/server.jar"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtAPI.jar"/>
-	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/GreenzGrupos.jar"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtPunir.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtEssentials.jar"/>
+	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtGrupos.jar"/>
+	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtCore.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

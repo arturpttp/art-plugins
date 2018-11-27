@@ -10,14 +10,14 @@ import org.bukkit.entity.Player;
 import net.dev.art.api.APIs.CalendarioAPI;
 import net.dev.art.chat.APIs.ChatAPI;
 import net.dev.art.chat.Utils.Mensagens;
+import net.dev.art.grupos.api.GruposAPI;
 import net.dev.art.punir.PunimentosAPI;
 import net.dev.art.rank.RanksAPI;
-import net.dev.green.grupos.APIs.GruposAPI;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ClickEvent.Action;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.ClickEvent.Action;
 
 public class StaffChatCommand extends Mensagens implements CommandExecutor {
 
@@ -54,14 +54,14 @@ public class StaffChatCommand extends Mensagens implements CommandExecutor {
 			}
 
 			if (ChatAPI.isMutado("staff")) {
-				if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) < 3) {
+				if (GruposAPI.hasPermission(p, "dono")) {
 					p.sendMessage("§cO chat §5Staff§c está MUTADO!");
 					p.playSound(p.getLocation(), Sound.CAT_MEOW, 1.0F, 0.5F);
 					return false;
 				}
 			}
 
-			if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) < 3) {
+			if (GruposAPI.hasPermission(p, "dono")) {
 				p.sendMessage(NoPerm);
 				return true;
 			}
@@ -78,7 +78,7 @@ public class StaffChatCommand extends Mensagens implements CommandExecutor {
 				count += 1;
 			}
 
-			String grupo = GruposAPI.getPrefix(p);
+			String grupo = GruposAPI.getGrupo(p.getName()).getPrefix();
 			String formato = "§5(STAFF) " + grupo + " " + RanksAPI.getCurrentRank(p).getPrefix().replace("&", "§")
 					+ "§f " + p.getName() + "§8 » §5" + ChatAPI.mensagem(p, mensagem);
 

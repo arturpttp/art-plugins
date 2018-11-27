@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import net.dev.art.api.APIs.FormatarAPI;
 import net.dev.art.eco.Main;
 import net.dev.art.eco.utils.Mensagens;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.grupos.api.GruposAPI;
 
 public class CoinsAPI extends Mensagens {
 
@@ -46,7 +46,7 @@ public class CoinsAPI extends Mensagens {
 	}
 
 	public static void sendHelp(Player p) {
-		if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) >= 3) {
+		if (GruposAPI.hasPermission(p, "dono")) {
 			p.sendMessage("§e=-=-=-=-=-=-=§b§l ArtEconomia - Coins §e=-=-=-=-=-=-=");
 			p.sendMessage("§e/coins (jogador) §8 » §6Ver os coins do jogador");
 			p.sendMessage("§e/coins set (jogador) (quantia) §8 » §6setar os coins do jogador");

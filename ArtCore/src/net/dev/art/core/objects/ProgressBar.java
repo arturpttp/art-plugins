@@ -6,9 +6,9 @@ public class ProgressBar {
 
 	double max;
 	double haved;
-	String character = "|";
-	String HasColor = "§a";
-	String NeedColor = "§c";
+	String character = "â–Ž";
+	String HasColor = "Â§a";
+	String NeedColor = "Â§c";
 	int totalBars = 10;
 
 	public double getHaved() {
@@ -26,14 +26,14 @@ public class ProgressBar {
 
 	public String getPorcetagem() {
 		int pct = (int) ((int) haved / max);
-		String color = "§c";
+		String color = "Â§c";
 		if (pct > 100) {
-			color = "§a";
+			color = "Â§a";
 			pct = 100;
 		} else if (pct > 50) {
-			color = "§e";
+			color = "Â§e";
 		} else if (pct < 50) {
-			color = "§c";
+			color = "Â§c";
 		}
 		return color + pct + "%";
 	}
@@ -45,11 +45,11 @@ public class ProgressBar {
 		StringBuilder sb = new StringBuilder();
 		sb.append(HasColor);
 		for (int i = 0; i < progressBars; i++) {
-			sb.append("|");
+			sb.append("â–Ž");
 		}
 		sb.append(NeedColor);
 		for (int i = 0; i < falta; i++) {
-			sb.append("|");
+			sb.append("â–Ž");
 		}
 		return sb.toString();
 
@@ -58,21 +58,21 @@ public class ProgressBar {
 	public String getProgressBar() {
 		int n = (int) getHaved();
 		if (n >= getMax()) {
-			return ChatColor.translateAlternateColorCodes('&', "§a/rankup");
+			return ChatColor.translateAlternateColorCodes('&', "Â§a/rankup");
 		}
 		int n2 = 0;
 		if (n > 0) {
 			n2 = (int) (n / (getMax() / 10));
 		}
-		final StringBuilder sb = new StringBuilder(String.valueOf("§c") + "");
+		final StringBuilder sb = new StringBuilder(String.valueOf("Â§c") + "");
 		if (n2 > 0) {
-			sb.append("§a");
+			sb.append("Â§a");
 		}
 		for (int i = 0; i < 10; ++i) {
 			if (i == n2) {
-				sb.append("§c");
+				sb.append("Â§c");
 			}
-			sb.append("|");
+			sb.append("â–Ž");
 		}
 		sb.append(String.valueOf("") + "");
 		return ChatColor.translateAlternateColorCodes('&', sb.toString());

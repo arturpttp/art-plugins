@@ -6,9 +6,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import net.dev.art.grupos.api.GruposAPI;
 import net.dev.art.kits.Main;
 import net.dev.art.kits.objects.Kit;
-import net.dev.green.grupos.APIs.GruposAPI;
 
 public class KitsAPI {
 
@@ -18,8 +18,8 @@ public class KitsAPI {
 		}
 	}
 
-	public static boolean hasGroup(Player p, String kit) {
-		if (Main.gperms.get(GruposAPI.getGrupo(p)).contains(getGrupoDoKit(kit))) {
+	public static boolean canPickup(Player p, String kit) {
+		if (GruposAPI.getGrupo(p.getName()) == GruposAPI.getGrupoByName(getGrupoDoKit(kit))) {
 			return true;
 		} else {
 			return false;
@@ -27,8 +27,7 @@ public class KitsAPI {
 	}
 
 	public static void addDelay(String p, String kit) {
-		Main.d.set("Delay." + p + "." + getKitByName(kit).getName(),
-				System.currentTimeMillis());
+		Main.d.set("Delay." + p + "." + getKitByName(kit).getName(), System.currentTimeMillis());
 		Main.saveKits();
 	}
 
@@ -50,7 +49,7 @@ public class KitsAPI {
 		Kit k = getKitByName(kit);
 		if (Main.d.getLong("Delay." + p.getName() + "." + k.getName()) <= 0) {
 			return false;
-		} 
+		}
 		if (Main.d.contains("Delay." + p.getName() + "." + k.getName())) {
 			return true;
 		} else {

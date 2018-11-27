@@ -16,7 +16,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.dev.art.core.managers.ArtCommand;
-import net.dev.art.core.utils.APIsManager;
+import net.dev.art.core.objects.ArtInventory;
+import net.dev.art.core.objects.Config;
 import net.dev.art.core.utils.ArtLib;
 import net.dev.art.core.utils.ClassGetter;
 
@@ -31,16 +32,10 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 	public static File config;
 	public static YamlConfiguration c;
 
-	protected static APIsManager APIsManager;
-
 	public List<String> comandos = new ArrayList<>();
 	public List<String> eventos = new ArrayList<>();
 
 	public String prefix = "§b" + getDescription().getName() + "§8 » ";
-
-	public static APIsManager getAPIsManager() {
-		return APIsManager;
-	}
 
 	@Override
 	public void onLoad() {
@@ -65,7 +60,6 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 
 	@Override
 	public void onEnable() {
-		APIsManager = new APIsManager(this);
 		aoIniciar();
 		Register();
 		sendConsoleInfos();
@@ -101,6 +95,26 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 				}
 			} catch (Exception e) {
 				console(getPrefix() + "§cErro ao carregar Classe de comando: " + classes.getSimpleName());
+			}
+
+			try {
+				if (Config.class.isAssignableFrom(classes) && classes != Config.class) {
+					Config config = (Config) classes.newInstance();
+					config.reloadConfig();
+					console(getPrefix() + "§eCarregando config: §b" + config.getName());
+				}
+			} catch (Exception e) {
+				console(getPrefix() + "§cERRO: ao tentar carregar classe da config: §b" + classes.getSimpleName());
+			}
+
+			try {
+				if (ArtInventory.class.isAssignableFrom(classes) && classes != ArtInventory.class) {
+					ArtInventory artInventory = (ArtInventory) classes.newInstance();
+					artInventory.register(pl);
+					console(getPrefix() + "§eCarregando ArtInventory: §b" + classes.getSimpleName());
+				}
+			} catch (Exception e) {
+				console(getPrefix() + "§cERRO: ao tentar carregar ArtInventory: §b" + classes.getSimpleName());
 			}
 		}
 	}

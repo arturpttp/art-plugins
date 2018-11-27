@@ -6,16 +6,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import net.dev.art.api.APIs.MensagensAPI;
 import net.dev.art.api.APIs.TitleAPI;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.core.utils.ArtLib;
+import net.dev.art.grupos.api.GruposAPI;
 
-public class LoginCommand extends MensagensAPI implements CommandExecutor {
+public class LoginCommand implements CommandExecutor, ArtLib {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lb, String[] args) {
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(NoPerm);
+			noPlayer(sender);
 		}
 		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("login")) {
@@ -33,7 +33,7 @@ public class LoginCommand extends MensagensAPI implements CommandExecutor {
 						TitleAPI.sendTitle(p, "§bArtAutenticador", "§aLogado Com Sucesso");
 						TitleAPI.sendActionBar("§aLogado Com Sucesso", p);
 						AutAPI.sendThis(p.getName());
-						if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) >= 3) {
+						if (GruposAPI.hasPermission(p, "dono")) {
 							p.setGameMode(GameMode.CREATIVE);
 						}
 					} else {

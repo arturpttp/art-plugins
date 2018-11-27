@@ -1,10 +1,13 @@
 package net.dev.art.core;
 
-import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 
-import net.dev.art.core.commands.ReloadCommand;
 import net.dev.art.core.objects.ArtSQL;
 import net.dev.art.core.objects.Config;
+import net.dev.art.core.utils.LetterHead;
 
 public class ArtCore extends ArtPlugin {
 
@@ -30,7 +33,7 @@ public class ArtCore extends ArtPlugin {
 		cf = new Config("config.yml", this);
 		cf.saveDefaultConfig();
 		startMysql();
-		new ReloadCommand(instance);
+		autoRegister(instance, "net.dev.art.core");
 	}
 
 	private void startMysql() {
@@ -57,22 +60,5 @@ public class ArtCore extends ArtPlugin {
 	public String getPrefix() {
 		return "§b" + "ArtCore" + "§8 » ";
 	}
-
-//	@EventHandler
-//	void onJoin(PlayerJoinEvent e) {
-//		Player p = e.getPlayer();
-//		ItemStack i = null;
-//		try {
-//			i = TexturedHead.getColoredHead(ColorsHeads.Dark_Sky_Blue,p);
-//
-//		} catch (Exception e2) {
-//			Bukkit.broadcastMessage("AA");
-//		}
-//		if (i == null) {
-//			Bukkit.broadcastMessage("BB");
-//			return;
-//		}
-//		p.getInventory().addItem(i);
-//	}
 
 }

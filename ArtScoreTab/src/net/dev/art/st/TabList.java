@@ -11,8 +11,6 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
 import net.dev.art.core.utils.Mine;
-import net.dev.green.grupos.APIs.GruposAPI;
-import net.dev.green.grupos.APIs.GruposAPI.GruposTipos;
 import net.minecraft.server.v1_8_R3.ChatComponentText;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerListHeaderFooter;

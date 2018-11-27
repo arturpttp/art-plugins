@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 import net.dev.art.chat.APIs.ChatAPI;
 import net.dev.art.chat.Utils.Mensagens;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.grupos.api.GruposAPI;
 
 public class ChatCommand extends Mensagens implements CommandExecutor {
 
@@ -20,7 +20,7 @@ public class ChatCommand extends Mensagens implements CommandExecutor {
 		}
 		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("chat")) {
-			if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) < 3) {
+			if (GruposAPI.hasPermission(p, "dono")) {
 				p.sendMessage(NoPerm);
 				p.playSound(p.getLocation(), Sound.CAT_MEOW, 1.0F, 0.5F);
 				return false;
@@ -94,7 +94,7 @@ public class ChatCommand extends Mensagens implements CommandExecutor {
 						}
 
 					}
-					
+
 					if (sb.equalsIgnoreCase("desmutar")) {
 						if (!canal.equalsIgnoreCase("staff") && !canal.equalsIgnoreCase("global")
 								&& !canal.equalsIgnoreCase("local")) {

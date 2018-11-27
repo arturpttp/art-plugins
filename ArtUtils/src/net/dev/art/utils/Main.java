@@ -1,19 +1,14 @@
 package net.dev.art.utils;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import net.dev.art.core.ArtPlugin;
-import net.dev.art.core.objects.ArtPlayer;
 import net.dev.art.core.objects.Config;
 import net.dev.art.utils.apis.LaggAPI;
 import net.dev.art.utils.commands.AdminCommand;
 import net.dev.art.utils.commands.RemoveStands;
 import net.dev.art.utils.events.AdminEvents;
 import net.dev.art.utils.events.MobstackEvent;
-import net.dev.green.grupos.APIs.GruposAPI;
 
 public class Main extends ArtPlugin {
 
@@ -66,15 +61,6 @@ public class Main extends ArtPlugin {
 	@Override
 	public String getPrefix() {
 		return null;
-	}
-
-	@EventHandler
-	void onJoin(PlayerJoinEvent e) {
-		Player p = e.getPlayer();
-		ArtPlayer ap = new ArtPlayer(p);
-		String playerprefix = GruposAPI.getPrefix(ap.getGrupo());
-		p.setPlayerListName(playerprefix + " " + p.getName());
-
 	}
 
 }

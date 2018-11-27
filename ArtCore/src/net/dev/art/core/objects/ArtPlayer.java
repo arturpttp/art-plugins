@@ -1,36 +1,28 @@
 package net.dev.art.core.objects;
 
-import java.io.Serializable;
-
 import org.bukkit.entity.Player;
 
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
+import net.dev.art.grupos.api.GruposAPI;
+import net.dev.art.grupos.objetos.Grupo;
 import net.dev.art.rank.Rank;
 import net.dev.art.rank.RanksAPI;
-import net.dev.green.grupos.APIs.GruposAPI;
-import net.dev.green.grupos.APIs.GruposAPI.GruposTipos;
 
-public class ArtPlayer implements Serializable {
-
-	/*
-	 * ArtPlayer serializavel
-	 */
-
-	private static final long serialVersionUID = 7796137796224029816L;
+public class ArtPlayer {
 
 	private Player player;
 	private double coins;
 	private double cash;
 	private Rank rank;
-	private GruposTipos grupo;
+	private Grupo grupo;
 
 	public ArtPlayer(Player player) {
 		this.player = player;
 		this.coins = CoinsAPI.getCoins(getPlayer());
 		this.cash = CashAPI.getCash(getPlayer());
 		this.rank = RanksAPI.getCurrentRank(getPlayer());
-		this.grupo = GruposAPI.getGrupo(player);
+		this.grupo = GruposAPI.getGrupo(player.getName());
 	}
 
 	public Player getPlayer() {
@@ -49,11 +41,11 @@ public class ArtPlayer implements Serializable {
 		return rank;
 	}
 
-	public GruposTipos getGrupo() {
+	public Grupo getGrupo() {
 		return grupo;
 	}
 
-	protected class Coin {
+	public class Coin {
 		private Player p;
 
 		public Coin(Player p) {
@@ -65,11 +57,13 @@ public class ArtPlayer implements Serializable {
 		}
 
 		public void remove(double qnt) {
-			CoinsAPI.removeCoins(p, qnt);
+			qnt = (getCoins() - qnt);
+			CoinsAPI.setCoins(p, qnt);
 		}
 
 		public void add(double qnt) {
-			CoinsAPI.addCoins(p, qnt);
+			qnt = (getCoins() + qnt);
+			CoinsAPI.setCoins(p, qnt);
 		}
 
 		public void pay(ArtPlayer target, double qnt) {
@@ -82,7 +76,7 @@ public class ArtPlayer implements Serializable {
 		return new Coin(player);
 	}
 
-	protected class Cash {
+	public class Cash {
 		private Player p;
 
 		public Cash(Player p) {

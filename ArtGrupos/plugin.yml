@@ -1,0 +1,7 @@
+name: ArtGrupos
+version: 0.0.1
+main: net.dev.art.grupos.Main
+author: arturpttp
+
+commands:
+

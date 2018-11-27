@@ -18,7 +18,7 @@ import net.dev.art.api.APIs.ItemsAPI;
 import net.dev.art.essentials.Main;
 import net.dev.art.essentials.apis.StaffAPI;
 import net.dev.art.essentials.utils.Mensagens;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.grupos.api.GruposAPI;
 
 public class StaffManager extends Mensagens implements CommandExecutor, Listener {
 
@@ -43,7 +43,7 @@ public class StaffManager extends Mensagens implements CommandExecutor, Listener
 				if (Bukkit.getPlayer(k) != null) {
 					status = "§aOnline";
 				}
-				String grupo = GruposAPI.getPrefix(GruposAPI.getGrupo(k));
+				String grupo = GruposAPI.getGrupo(p.getName()).getPrefix();
 
 				String ul = null;
 

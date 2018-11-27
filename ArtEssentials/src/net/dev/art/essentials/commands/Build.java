@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import net.dev.art.api.APIs.TitleAPI;
 import net.dev.art.essentials.Main;
 import net.dev.art.essentials.utils.Mensagens;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.grupos.api.GruposAPI;
 
 public class Build extends Mensagens implements CommandExecutor {
 
@@ -20,7 +20,7 @@ public class Build extends Mensagens implements CommandExecutor {
 		}
 		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("build")) {
-			if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) > 2) {
+			if (GruposAPI.getGrupo(p.getName()).getPermissions().contains("dono")) {
 				if (Main.builds.contains(p)) {
 					Main.builds.remove(p);
 					mensagem(p, "§cVocê desativou seu modo §bBUILD§c, agora você não pode mais construir");

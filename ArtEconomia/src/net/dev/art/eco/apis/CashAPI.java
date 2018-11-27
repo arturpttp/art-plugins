@@ -6,21 +6,21 @@ import org.bukkit.entity.Player;
 import net.dev.art.api.APIs.FormatarAPI;
 import net.dev.art.eco.Main;
 import net.dev.art.eco.utils.Mensagens;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.grupos.api.GruposAPI;
 
-public class CashAPI extends Mensagens{
+public class CashAPI extends Mensagens {
 
 	public static YamlConfiguration config = Main.getCash();
 
 	public static double getCash(Player p) {
-		if ( config.getDouble(p.getName().toLowerCase() + "") < 0) {
+		if (config.getDouble(p.getName().toLowerCase() + "") < 0) {
 			return 0.0;
 		}
 		return config.getDouble(p.getName().toLowerCase() + "");
 	}
-	
+
 	public static double getCash(String p) {
-		if ( config.getDouble(p.toLowerCase() + "") < 0) {
+		if (config.getDouble(p.toLowerCase() + "") < 0) {
 			return 0.0;
 		}
 		return config.getDouble(p.toLowerCase() + "");
@@ -46,7 +46,7 @@ public class CashAPI extends Mensagens{
 	}
 
 	public static void sendHelp(Player p) {
-		if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) >= 3) {
+		if (GruposAPI.hasPermission(p, "dono")) {
 			p.sendMessage("§e=-=-=-=-=-=-=§b§l ArtEconomia - Cash §e=-=-=-=-=-=-=");
 			p.sendMessage("§e/cash (jogador) §8 » §6Ver os Cash do jogador");
 			p.sendMessage("§e/cash set (jogador) (quantia) §8 » §6setar os Cash do jogador");
@@ -72,5 +72,5 @@ public class CashAPI extends Mensagens{
 		addCash(t, quantia);
 		Main.getInstance().saveCash();
 	}
-	
+
 }

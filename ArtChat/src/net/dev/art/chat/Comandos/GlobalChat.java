@@ -12,14 +12,14 @@ import net.dev.art.chat.APIs.ChatAPI;
 import net.dev.art.chat.Utils.Mensagens;
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
+import net.dev.art.grupos.api.GruposAPI;
 import net.dev.art.punir.PunimentosAPI;
 import net.dev.art.rank.RanksAPI;
-import net.dev.green.grupos.APIs.GruposAPI;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ClickEvent.Action;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.ClickEvent.Action;
 
 public class GlobalChat extends Mensagens implements CommandExecutor {
 
@@ -56,7 +56,7 @@ public class GlobalChat extends Mensagens implements CommandExecutor {
 			}
 
 			if (ChatAPI.isMutado("global")) {
-				if (GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) < 3) {
+				if (GruposAPI.hasPermission(p, "dono")) {
 					p.sendMessage("§cO chat §7Global§c está MUTADO!");
 					p.playSound(p.getLocation(), Sound.CAT_MEOW, 1.0F, 0.5F);
 					return false;
@@ -75,7 +75,7 @@ public class GlobalChat extends Mensagens implements CommandExecutor {
 				count += 1;
 			}
 
-			String grupo = GruposAPI.getPrefix(p);
+			String grupo = GruposAPI.getGrupo(p.getName()).getPrefix();
 			String formato = "§7(G) " + grupo + " " + RanksAPI.getCurrentRank(p).getPrefix().replace("&", "§") + " §f"
 					+ p.getName() + "§8 » §7" + ChatAPI.mensagem(p, mensagem);
 
@@ -100,7 +100,7 @@ public class GlobalChat extends Mensagens implements CommandExecutor {
 	}
 
 	public static String format(Player p) {
-		return "§eNick: " + GruposAPI.getPrefix(p) + " " + p.getName() + "\n" + "§eCoins: §b"
+		return "§eNick: " + GruposAPI.getGrupo(p.getName()).getPrefix() + " " + p.getName() + "\n" + "§eCoins: §b"
 				+ CoinsAPI.getCoinsFormatado(p) + "\n" + "§eCash: §b" + CashAPI.getCashFormatado(p) + "\n"
 				+ "§eClan: §7Nenhum";
 	}

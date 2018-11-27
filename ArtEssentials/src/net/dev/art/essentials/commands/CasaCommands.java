@@ -15,7 +15,7 @@ import net.dev.art.essentials.manager.CasasManager;
 import net.dev.art.essentials.manager.CasasManager.Help;
 import net.dev.art.essentials.objetos.Casa;
 import net.dev.art.essentials.utils.Mensagens;
-import net.dev.green.grupos.APIs.GruposAPI;
+import net.dev.art.grupos.api.GruposAPI;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -85,7 +85,7 @@ public class CasaCommands extends Mensagens implements CommandExecutor {
 		}
 		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("casa")) {
-			if (!(GruposAPI.getPremissionLevel(GruposAPI.getGrupo(p)) > 2)) {
+			if (GruposAPI.getGrupo(p.getName()).getPermissions().contains("dono")) {
 				p.sendMessage(NoPerm);
 				return true;
 			}

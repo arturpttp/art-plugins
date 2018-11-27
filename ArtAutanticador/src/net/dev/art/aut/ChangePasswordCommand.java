@@ -5,14 +5,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import net.dev.art.api.APIs.MensagensAPI;
+import net.dev.art.core.utils.ArtLib;
 
-public class ChangePasswordCommand extends MensagensAPI implements CommandExecutor {
+public class ChangePasswordCommand implements CommandExecutor, ArtLib {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lb, String[] args) {
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(NoPerm);
+			noPlayer(sender);
 		}
 		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("changepassword")) {

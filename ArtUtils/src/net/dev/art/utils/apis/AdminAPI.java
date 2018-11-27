@@ -19,8 +19,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import net.dev.art.core.objects.ArtItem;
 import net.dev.art.core.objects.ArtPlayer;
+import net.dev.art.grupos.api.GruposAPI;
 import net.dev.art.utils.Main;
-import net.dev.green.grupos.APIs.GruposAPI;
 
 public class AdminAPI {
 
@@ -83,7 +83,7 @@ public class AdminAPI {
 		ArtPlayer artplayer = new ArtPlayer(t);
 		double coins = artplayer.getCoins();
 		double cash = artplayer.getCash();
-		String grupo = GruposAPI.getPrefix(artplayer.getGrupo());
+		String grupo = artplayer.getGrupo().getPrefix();
 		String rank = artplayer.getRank().getPrefix().replace("&", "§");
 		double healt = artplayer.getPlayer().getHealth();
 
