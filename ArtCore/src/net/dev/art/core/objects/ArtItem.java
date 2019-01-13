@@ -2,14 +2,23 @@ package net.dev.art.core.objects;
 
 import java.util.Arrays;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 
 import net.dev.art.core.utils.EnchantGlow;
 
 public class ArtItem extends ItemStack {
+
+	static Listener listener = new Listener() {
+
+	};
 
 	public ArtItem(Material type) {
 		super(type);
@@ -28,7 +37,7 @@ public class ArtItem extends ItemStack {
 	public ArtItem Glowing(boolean b) {
 		if (b) {
 			EnchantGlow.addGlow(this);
-		}else {
+		} else {
 			EnchantGlow.removeGlow(this);
 		}
 		return this;
@@ -50,6 +59,20 @@ public class ArtItem extends ItemStack {
 
 	public ArtItem encantamento(Enchantment enc, int level) {
 		this.addUnsafeEnchantment(enc, level);
+		return this;
+	}
+
+	public static interface ArtItemClick {
+		@EventHandler
+		void onClick(InventoryClickEvent e);
+	}
+
+	public static void register(Plugin plugin) {
+		Bukkit.getPluginManager().registerEvents(listener, plugin);
+	}
+
+	public ArtItem onClick(Listener listener) {
+		ArtItem.listener = listener;
 		return this;
 	}
 

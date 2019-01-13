@@ -38,7 +38,7 @@ public class GruposAPI {
 	}
 
 	public static Grupo getGrupo(String player) {
-		return Main.gruposPlayers.get(player);
+		return getGrupoByName(Main.getInstance().getConfig().getString(player));
 	}
 
 	public static Grupo getGrupoByName(String name) {

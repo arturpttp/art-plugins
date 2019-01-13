@@ -8,6 +8,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import net.dev.art.core.objects.ArtInventory;
 import net.dev.art.core.objects.ArtItem;
 import net.dev.art.core.objects.ArtPlayer;
+import net.dev.art.eco.apis.CoinsAPI;
 
 public class ShopInventory extends ArtInventory {
 
@@ -22,13 +23,13 @@ public class ShopInventory extends ArtInventory {
 						Player player = (Player) e.getWhoClicked();
 						ArtPlayer p = new ArtPlayer(player);
 
-						if (p.getCoins() >= 10000) {
+						if (CoinsAPI.getCoins(player) >= 10000) {
 							e.getWhoClicked().getInventory()
 									.addItem(new ArtItem(Material.DIAMOND).nome("§b§lDIAMANTE"));
 							player.playSound(player.getLocation(), Sound.LEVEL_UP, 1f, 1f);
 							player.sendMessage("§aVocê comprou um §b§lDIAMANTE");
 							player.closeInventory();
-							p.coin().remove(10000);
+							CoinsAPI.removeCoins(player, 10000.00);
 						} else {
 							player.playSound(player.getLocation(), Sound.ANVIL_LAND, 1f, 1f);
 							player.sendMessage("§cVocê nao tem dinheiro suficiente para comprar um §b§lDIAMANTE");

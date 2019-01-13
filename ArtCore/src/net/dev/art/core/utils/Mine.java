@@ -40,7 +40,7 @@ public class Mine {
 	public static Object getValue(Object object, String name) throws Exception {
 		return getField(object, name).get(object);
 	}
-	
+
 	public static Class<?>[] getParameters(Object... parameters) throws Exception {
 		Class<?>[] objects = new Class<?>[parameters.length];
 		for (int i = 0; i < parameters.length; i++) {
@@ -49,7 +49,7 @@ public class Mine {
 		return objects;
 
 	}
-	
+
 	public static Method getMethod(Object object, String name, Object... parameters) throws Exception {
 		Class<?> claz = getClassFrom(object);
 		try {
@@ -63,13 +63,13 @@ public class Mine {
 		}
 
 	}
-	
+
 	public static boolean OPT_AUTO_RESPAWN = true;
 
 	public static boolean startWith(String message, String text) {
 		return message.toLowerCase().startsWith(text.toLowerCase());
 	}
-	
+
 	public static Object getResult(Object object, String name, Object... values) throws Exception {
 
 		return getMethod(object, name, values).invoke(object, values);
@@ -83,9 +83,9 @@ public class Mine {
 		}
 
 	}
-	
+
 	public static String classBukkitBukkit = "#bBukkit";
-	
+
 	public static List<Player> getPlayers() {
 		List<Player> list = new ArrayList<>();
 		try {
@@ -110,7 +110,7 @@ public class Mine {
 
 		return list;
 	}
-	
+
 	public static void broadcast(String message) {
 		Bukkit.broadcastMessage(message);
 	}
@@ -122,7 +122,6 @@ public class Mine {
 		}
 	}
 
-	
 	public static boolean createCommand(Plugin plugin, Command... cmds) {
 		try {
 			Class<?> serverClass = getClassFrom(Bukkit.getServer());
@@ -138,7 +137,7 @@ public class Mine {
 		}
 		return OPT_AUTO_RESPAWN;
 	}
-	
+
 	public static Class<?> getClassFrom(Object object) throws Exception {
 		if (object instanceof Class) {
 			return (Class<?>) object;

@@ -14,8 +14,6 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.google.api.services.translate.Translate;
-
 import net.dev.art.core.utils.ArtLib;
 import net.dev.art.utils.Main;
 import net.dev.art.utils.apis.AdminAPI;
@@ -27,13 +25,14 @@ public class AdminEvents implements Listener, ArtLib {
 		if (e.getEntity() instanceof Item) {
 			Item item = (Item) e.getEntity();
 
+			final String NAME = item.getItemStack().getType().toString().replace("_", " ");
+
 			Main.getInstance().getServer().getScheduler().scheduleAsyncRepeatingTask(Main.getInstance(),
 					new BukkitRunnable() {
 
 						@Override
 						public void run() {
-							String name = "§b" + item.getItemStack().getType().toString().replace("_", " ") + " §e"
-									+ item.getItemStack().getAmount();
+							String name = "§b" + NAME + " §e" + item.getItemStack().getAmount();
 							item.setCustomName(name);
 
 						}

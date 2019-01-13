@@ -41,7 +41,7 @@ public class TabList {
 			Field field = packet.getClass().getDeclaredField("b");
 			field.setAccessible(true);
 			field.set(packet, IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + footer + "\"}"));
-			for (Player p : Mine.getPlayers()) {
+			for (Player p : Bukkit.getOnlinePlayers()) {
 				((CraftPlayer) p).getHandle().playerConnection.sendPacket(packet);
 			}
 

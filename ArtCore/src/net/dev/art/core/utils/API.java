@@ -6,10 +6,15 @@ import java.lang.reflect.Method;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class API {
+	
+	public static void callEvent(Event event) {
+		Bukkit.getPluginManager().callEvent(event);
+	}
 
 	public static ItemStack toGlass(final Boolean rainbow, final int type) {
 		final int randomNum = 1 + (int) (Math.random() * 6.0);

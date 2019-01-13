@@ -7,6 +7,5 @@
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtCore.jar"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtRankUP.jar"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtGrupos.jar"/>
-	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/google-api-services-translate-v2-rev51-1.24.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

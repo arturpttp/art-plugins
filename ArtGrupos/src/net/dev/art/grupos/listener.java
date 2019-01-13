@@ -20,8 +20,10 @@ public class listener implements Listener {
 
 		try {
 			GruposAPI.setGrupo(p.getName(), Main.getInstance().config.getString(p.getName()));
+			GruposAPI.setNames(p, GruposAPI.getGrupo(p.getName()));
 		} catch (Exception e2) {
 			GruposAPI.setGrupo(p.getName(), new Grupo("§8§lMEMBRO", "Membro", Arrays.asList("membro")));
+			GruposAPI.setNames(p, new Grupo("§8§lMEMBRO", "Membro", Arrays.asList("membro")));
 		}
 
 	}

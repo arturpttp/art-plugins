@@ -2,6 +2,8 @@ package net.dev.art.utils.apis;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.entity.Creature;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 
@@ -13,6 +15,12 @@ public class LaggAPI {
 	public static void clearDrops(World world) {
 		for (Item entity : world.getEntitiesByClass(Item.class)) {
 			entity.remove();
+		}
+		for (Entity e : world.getEntities()) {
+			if (e instanceof Creature) {
+				e.remove();
+			}
+
 		}
 	}
 

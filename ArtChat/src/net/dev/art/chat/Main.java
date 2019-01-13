@@ -13,20 +13,19 @@ import net.dev.art.chat.Comandos.GlobalChat;
 import net.dev.art.chat.Comandos.StaffChatCommand;
 import net.dev.art.chat.Comandos.TellCommand;
 import net.dev.art.chat.Listeners.ChatLocal;
+import net.dev.art.core.utils.ArtLib;
 
-public class Main extends JavaPlugin {
-
+public class Main extends JavaPlugin implements ArtLib{
+	String token = "NTE3MTE1MDg3MTgyNDk1NzQ1.Dw5F9g.HrUA-hxtjILgbL2JT7c-iVz8NVk";
 	public static Main instance;
+	public static File config;
+	public static YamlConfiguration c;
 	public ConsoleCommandSender send = Bukkit.getConsoleSender();
+	public String prefix = "§b" + getDescription().getName() + "§8 § ";
 
 	public static Main getInstance() {
 		return instance;
 	}
-
-	public static File config;
-	public static YamlConfiguration c;
-
-	public String prefix = "§b" + getDescription().getName() + "§8 » ";
 
 	@Override
 	public void onLoad() {
@@ -45,7 +44,9 @@ public class Main extends JavaPlugin {
 		send.sendMessage("");
 
 		sendConsoleInfos();
+		
 		Register();
+
 	}
 
 	private void Register() {
@@ -55,7 +56,7 @@ public class Main extends JavaPlugin {
 		getCommand("sc").setExecutor(new StaffChatCommand());
 		getCommand("g").setExecutor(new GlobalChat());
 		getCommand("tell").setExecutor(new TellCommand());
-		
+
 	}
 
 	private void sendConsoleInfos() {

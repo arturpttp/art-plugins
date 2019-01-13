@@ -35,7 +35,6 @@ import net.dev.art.essentials.commands.ReloreHand;
 import net.dev.art.essentials.commands.RenameHand;
 import net.dev.art.essentials.commands.Spawn;
 import net.dev.art.essentials.commands.StaffManager;
-import net.dev.art.essentials.commands.TellCommand;
 import net.dev.art.essentials.commands.Teste;
 import net.dev.art.essentials.commands.WarpCommand;
 import net.dev.art.essentials.commands.WorldCommand;
@@ -89,6 +88,8 @@ public class Main extends JavaPlugin {
 		Debug();
 		reloadWarps();
 		loadCasas();
+		
+		
 	}
 
 	private void loadCasas() {

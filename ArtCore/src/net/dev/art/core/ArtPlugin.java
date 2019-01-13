@@ -2,6 +2,7 @@ package net.dev.art.core;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -16,8 +17,11 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.dev.art.core.managers.ArtCommand;
+import net.dev.art.core.objects.API;
 import net.dev.art.core.objects.ArtInventory;
+import net.dev.art.core.objects.ArtItem;
 import net.dev.art.core.objects.Config;
+import net.dev.art.core.objects.Mensagem;
 import net.dev.art.core.utils.ArtLib;
 import net.dev.art.core.utils.ClassGetter;
 
@@ -26,7 +30,7 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 	public ConsoleCommandSender send = Bukkit.getConsoleSender();
 
 	public Plugin getPlugin() {
-		return this;
+		return JavaPlugin.getPlugin(this.getClass());
 	}
 
 	public static File config;
@@ -34,7 +38,7 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 
 	public List<String> comandos = new ArrayList<>();
 	public List<String> eventos = new ArrayList<>();
-
+	public List<Mensagem> mensagens = new ArrayList<>();
 	public String prefix = "§b" + getDescription().getName() + "§8 » ";
 
 	@Override
@@ -58,12 +62,26 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 
 	}
 
+	public void addMensagem(String name, String msg) {
+		mensagens.add(new Mensagem(name, msg));
+	}
+
+	public String getMensagem(String name) {
+		for (Mensagem msg : mensagens) {
+			if (msg.getName().equalsIgnoreCase(name)) {
+				return msg.getMensagem();
+			}
+		}
+		return "§cA Mesagem não existe.";
+	}
+
 	@Override
 	public void onEnable() {
 		aoIniciar();
 		Register();
+		ArtItem.register(getPlugin());
 		sendConsoleInfos();
-		setEvent(this);
+//		setEvent(this);
 	}
 
 	public void sendIniciando(ArtPlugin instance) {
@@ -73,6 +91,10 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 				+ instance.getDescription().getAuthors().toString().replace("[", "").replace("]", ""));
 		send.sendMessage("§eVersao: §b§l" + instance.getDescription().getVersion());
 		send.sendMessage("");
+	}
+
+	public void register(JavaPlugin pl) {
+		autoRegister(pl, "net.dev.art");
 	}
 
 	public void autoRegister(JavaPlugin pl, String pacote) {
@@ -107,15 +129,6 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 				console(getPrefix() + "§cERRO: ao tentar carregar classe da config: §b" + classes.getSimpleName());
 			}
 
-			try {
-				if (ArtInventory.class.isAssignableFrom(classes) && classes != ArtInventory.class) {
-					ArtInventory artInventory = (ArtInventory) classes.newInstance();
-					artInventory.register(pl);
-					console(getPrefix() + "§eCarregando ArtInventory: §b" + classes.getSimpleName());
-				}
-			} catch (Exception e) {
-				console(getPrefix() + "§cERRO: ao tentar carregar ArtInventory: §b" + classes.getSimpleName());
-			}
 		}
 	}
 
