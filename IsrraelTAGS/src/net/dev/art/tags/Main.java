@@ -40,9 +40,7 @@ public class Main extends JavaPlugin implements Listener {
 			p.setDisplayName("§4§lDONO " + p.getName());
 			p.setPlayerListName("§4§lDONO " + p.getName());
 		}
-		
-		
-		
+
 	}
 
 }
