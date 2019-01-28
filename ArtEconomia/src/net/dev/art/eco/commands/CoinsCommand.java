@@ -8,24 +8,26 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import net.dev.art.api.APIs.FormatarAPI;
+import net.dev.art.core.utils.ArtLib;
 import net.dev.art.eco.apis.CoinsAPI;
-import net.dev.art.eco.utils.Mensagens;
 import net.dev.art.grupos.api.GruposAPI;
 
 @SuppressWarnings("all")
-public class CoinsCommand extends Mensagens implements CommandExecutor {
+public class CoinsCommand implements CommandExecutor, ArtLib {
 
 	public static boolean hasPermission(Player p) {
-		if (GruposAPI.hasPermission(p, "dono")) 
+		if (GruposAPI.hasPermission(p, "dono"))
 			return true;
 		else
 			return false;
 	}
 
+	public String prefix = "§bArtEconomia §8» ";
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lb, String[] args) {
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(NoPlayer);
+			noPlayer(sender);
 			return true;
 		}
 		Player p = (Player) sender;
@@ -54,12 +56,12 @@ public class CoinsCommand extends Mensagens implements CommandExecutor {
 						return true;
 					}
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 					Double quantia;
@@ -92,12 +94,12 @@ public class CoinsCommand extends Mensagens implements CommandExecutor {
 						return true;
 					}
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 					Double quantia;
@@ -130,12 +132,12 @@ public class CoinsCommand extends Mensagens implements CommandExecutor {
 						return true;
 					}
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 					Double quantia;
@@ -167,12 +169,12 @@ public class CoinsCommand extends Mensagens implements CommandExecutor {
 						return true;
 					}
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 					Double quantia;
@@ -199,12 +201,11 @@ public class CoinsCommand extends Mensagens implements CommandExecutor {
 						return true;
 					}
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
 						return true;
 					}
 					mensagem(p, "§eCoins De `§b" + target.getName() + "§e`: §b" + CoinsAPI.getCoinsFormatado(target));

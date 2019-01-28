@@ -4,11 +4,11 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import net.dev.art.api.APIs.FormatarAPI;
+import net.dev.art.core.utils.ArtLib;
 import net.dev.art.eco.Main;
-import net.dev.art.eco.utils.Mensagens;
 import net.dev.art.grupos.api.GruposAPI;
 
-public class CashAPI extends Mensagens {
+public class CashAPI implements ArtLib {
 
 	public static YamlConfiguration config = Main.getCash();
 
@@ -65,7 +65,7 @@ public class CashAPI extends Mensagens {
 
 	public static void payCash(Player p, Player t, Double quantia) {
 		if (getCash(p) < quantia) {
-			mensagem("§cVocê Nao Tem Cash Suficiente", p);
+			p.sendMessage("§cVocê Nao Tem Cash Suficiente");
 			return;
 		}
 		removeCash(p, quantia);

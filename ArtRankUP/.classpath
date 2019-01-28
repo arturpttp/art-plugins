@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtPunir.jar"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/APIs/Citizens (1).jar"/>
 	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtEconomia.jar"/>
+	<classpathentry kind="lib" path="C:/MeusProjetos/Servers/ServerPraTestes/plugins/ArtCore.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

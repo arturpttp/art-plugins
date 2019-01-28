@@ -1,5 +1,7 @@
 package net.dev.art.core;
 
+import org.bukkit.Bukkit;
+
 import net.dev.art.core.objects.ArtSQL;
 import net.dev.art.core.utils.Configs;
 

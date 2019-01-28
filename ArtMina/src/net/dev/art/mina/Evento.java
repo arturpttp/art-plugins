@@ -6,6 +6,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -47,8 +48,25 @@ public class Evento implements Listener {
 	}
 
 	void addInv(Player p, Material m) {
+		int fortune = 1;
+		if (p.getItemInHand().getEnchantments().containsKey(Enchantment.LOOT_BONUS_BLOCKS)) {
+			Enchantment e = Enchantment.LOOT_BONUS_BLOCKS;
+			if (p.getItemInHand().getEnchantmentLevel(e) == 1) {
+				fortune = 1;
+			} else if (p.getItemInHand().getEnchantmentLevel(e) == 2) {
+				fortune = 2;
+			} else if (p.getItemInHand().getEnchantmentLevel(e) == 3) {
+				fortune = 3;
+			} else if (p.getItemInHand().getEnchantmentLevel(e) == 4) {
+				fortune = 4;
+			} else if (p.getItemInHand().getEnchantmentLevel(e) == 5) {
+				fortune = 5;
+			} else if (p.getItemInHand().getEnchantmentLevel(e) >= 6) {
+				fortune = 7;
+			}
+		}
 		try {
-			p.getInventory().addItem(new ItemStack(m));
+			p.getInventory().addItem(new ItemStack(m, fortune));
 		} catch (Exception e) {
 			p.sendMessage("§cERRO");
 		}
@@ -57,7 +75,6 @@ public class Evento implements Listener {
 
 	Block bl = null;
 
-	@EventHandler
 	void Hole3x3(BlockBreakEvent e) {
 		Player p = e.getPlayer();
 		Block b = e.getBlock();

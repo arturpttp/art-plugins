@@ -23,7 +23,7 @@ public class DBManager {
 	private String user = "";
 	private String password = "";
 	private String host = "";
-	private String port = "";
+	private String port = "3306";
 	private String database = "";
 	private String type = "jdbc:mysql://";
 	private boolean useSQLite;
@@ -39,6 +39,14 @@ public class DBManager {
 		if (this.debug) {
 			Bukkit.getConsoleSender().sendMessage("§8[§aDataBase§8] » §a" + debug);
 		}
+	}
+
+	public void execute(String comando) throws SQLException {
+		Connection c = getConnection();
+		PreparedStatement pst;
+		pst = c.prepareStatement(comando);
+		pst.executeUpdate();
+		pst.close();
 	}
 
 	public static boolean isMySQL() {
@@ -153,7 +161,7 @@ public class DBManager {
 	 * @param host Host
 	 */
 	public DBManager(String user, String pass, String host) {
-		this(user, pass, host, "mine");
+		this(user, pass, host, "database");
 	}
 
 	/**
@@ -204,6 +212,7 @@ public class DBManager {
 			update("CREATE TABLE IF NOT EXISTS " + table + " (ID INT NOT NULL AUTO_INCREMENT, " + values
 					+ ", PRIMARY KEY(ID)) default charset = utf8");
 		}
+		sendDebug("§eCriado tabela `§b" + table + "§e`.");
 	}
 
 	/**
@@ -461,8 +470,6 @@ public class DBManager {
 				query.replaceFirst("\\?", "'" + Extra.fromJavaToSQL(replacer) + "'");
 				id++;
 			}
-
-			sendDebug("[MySQL] " + query);
 
 			return state;
 		} catch (Exception e) {

@@ -15,7 +15,8 @@ import net.dev.art.chat.Comandos.TellCommand;
 import net.dev.art.chat.Listeners.ChatLocal;
 import net.dev.art.core.utils.ArtLib;
 
-public class Main extends JavaPlugin implements ArtLib{
+public class Main extends JavaPlugin implements ArtLib {
+	
 	String token = "NTE3MTE1MDg3MTgyNDk1NzQ1.Dw5F9g.HrUA-hxtjILgbL2JT7c-iVz8NVk";
 	public static Main instance;
 	public static File config;
@@ -44,7 +45,7 @@ public class Main extends JavaPlugin implements ArtLib{
 		send.sendMessage("");
 
 		sendConsoleInfos();
-		
+
 		Register();
 
 	}

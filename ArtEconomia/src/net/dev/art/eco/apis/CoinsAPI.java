@@ -4,11 +4,11 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 import net.dev.art.api.APIs.FormatarAPI;
+import net.dev.art.core.utils.ArtLib;
 import net.dev.art.eco.Main;
-import net.dev.art.eco.utils.Mensagens;
 import net.dev.art.grupos.api.GruposAPI;
 
-public class CoinsAPI extends Mensagens {
+public class CoinsAPI implements ArtLib {
 
 	public static YamlConfiguration config = Main.getCoins();
 
@@ -18,7 +18,7 @@ public class CoinsAPI extends Mensagens {
 		}
 		return config.getDouble(p.getName().toLowerCase() + "");
 	}
-	
+
 	public static double getCoins(String p) {
 		if (config.getDouble(p.toLowerCase() + "") < 0) {
 			return 0.0;
@@ -44,6 +44,11 @@ public class CoinsAPI extends Mensagens {
 		setCoins(p, getCoins(p) - quantia);
 		Main.getInstance().saveCoins();
 	}
+	
+	public static void removerCoins(Player p, Double quantia) {
+		setCoins(p, getCoins(p) - quantia);
+		Main.getInstance().saveCoins();
+	}
 
 	public static void sendHelp(Player p) {
 		if (GruposAPI.hasPermission(p, "dono")) {
@@ -65,7 +70,7 @@ public class CoinsAPI extends Mensagens {
 
 	public static void payCoins(Player p, Player t, Double quantia) {
 		if (getCoins(p) < quantia) {
-			mensagem("§cVocê Nao Tem Coins Suficiente", p);
+			p.sendMessage("§cVocê Nao Tem Coins Suficiente");
 			return;
 		}
 		removeCoins(p, quantia);

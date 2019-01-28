@@ -8,13 +8,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import net.dev.art.api.APIs.FormatarAPI;
+import net.dev.art.core.utils.ArtLib;
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
-import net.dev.art.eco.utils.Mensagens;
 import net.dev.art.grupos.api.GruposAPI;
 
 @SuppressWarnings("all")
-public class CashCommand extends Mensagens implements CommandExecutor {
+public class CashCommand implements CommandExecutor, ArtLib {
 
 	public static boolean hasPermission(Player p) {
 		if (GruposAPI.hasPermission(p, "dono"))
@@ -23,10 +23,12 @@ public class CashCommand extends Mensagens implements CommandExecutor {
 			return false;
 	}
 
+	public String prefix = "§bArtEconomia §8» ";
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lb, String[] args) {
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(NoPlayer);
+			noPlayer(sender);
 			return true;
 		}
 		Player p = (Player) sender;
@@ -55,12 +57,12 @@ public class CashCommand extends Mensagens implements CommandExecutor {
 						return true;
 					}
 					if (!CashAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 					Double quantia;
@@ -93,12 +95,12 @@ public class CashCommand extends Mensagens implements CommandExecutor {
 						return true;
 					}
 					if (!CashAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 					Double quantia;
@@ -131,12 +133,12 @@ public class CashCommand extends Mensagens implements CommandExecutor {
 						return true;
 					}
 					if (!CashAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 					Double quantia;
@@ -170,12 +172,12 @@ public class CashCommand extends Mensagens implements CommandExecutor {
 						return true;
 					}
 					if (!CashAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 					Double quantia;
@@ -206,12 +208,12 @@ public class CashCommand extends Mensagens implements CommandExecutor {
 						return true;
 					}
 					if (!CashAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 
 					if (!CoinsAPI.config.contains(target.getName().toLowerCase())) {
-						mensagem("§cEste Player Não Existe!", p);
+						mensagem(p, "§cEste Player Não Existe!");
 						return true;
 					}
 					mensagem(p, "§eCash De `§b" + target.getName() + "§e`: §b" + CashAPI.getCashFormatado(target));

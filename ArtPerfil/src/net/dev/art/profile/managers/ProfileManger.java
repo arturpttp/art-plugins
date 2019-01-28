@@ -10,22 +10,22 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import net.dev.art.eco.utils.Mensagens;
+import net.dev.art.core.utils.ArtLib;
 import net.dev.art.grupos.api.GruposAPI;
 import net.dev.art.profile.apis.ProfileAPI;
 
-public class ProfileManger extends Mensagens implements CommandExecutor, Listener {
+public class ProfileManger implements CommandExecutor, Listener, ArtLib {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lb, String[] args) {
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(NoPlayer);
+			noPerm(sender);
 			return true;
 		}
 		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("perfil")) {
 			if (GruposAPI.getGrupo(p.getName()).getPermissions().contains("dono")) {
-				p.sendMessage(NoPerm);
+				noPerm(p);
 				return true;
 			}
 			if (args.length == 0) {

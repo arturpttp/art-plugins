@@ -88,8 +88,7 @@ public class Main extends JavaPlugin {
 		Debug();
 		reloadWarps();
 		loadCasas();
-		
-		
+
 	}
 
 	private void loadCasas() {
@@ -162,9 +161,9 @@ public class Main extends JavaPlugin {
 			cfg.set(path + "World", w.getLocation().getWorld().getName());
 			try {
 				cfg.save(file);
-				mensagem("§eSalvando Warps!");
+				mensagem("§eSalvando Warp " + name + "!");
 			} catch (IOException e) {
-				mensagem("§cErro ao salvar warps!");
+				mensagem("§cErro ao salvar warp" + name + "!");
 			}
 		}
 	}

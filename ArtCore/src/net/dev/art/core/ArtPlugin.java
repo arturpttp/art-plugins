@@ -2,7 +2,6 @@ package net.dev.art.core;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -17,8 +16,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.dev.art.core.managers.ArtCommand;
-import net.dev.art.core.objects.API;
-import net.dev.art.core.objects.ArtInventory;
+import net.dev.art.core.managers.Menu;
 import net.dev.art.core.objects.ArtItem;
 import net.dev.art.core.objects.Config;
 import net.dev.art.core.objects.Mensagem;
@@ -129,6 +127,17 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 				console(getPrefix() + "§cERRO: ao tentar carregar classe da config: §b" + classes.getSimpleName());
 			}
 
+			try {
+				if (Menu.class.isAssignableFrom(classes)) {
+					Menu classe = (Menu) classes.newInstance();
+					if (classes == Menu.class)
+						return;
+					classe.register(pl);
+					console(getPrefix() + "§eCarregando Menu: §b" + classes.getSimpleName());
+				}
+			} catch (Exception e) {
+				console(getPrefix() + "§cErro ao carregar Menu: " + classes.getSimpleName());
+			}
 		}
 	}
 

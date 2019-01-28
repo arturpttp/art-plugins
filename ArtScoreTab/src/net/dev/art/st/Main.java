@@ -13,6 +13,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import net.dev.art.core.objects.ProgressBar;
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
+import net.dev.art.facs.manager.PlayersManager;
+import net.dev.art.facs.objects.Faction;
+import net.dev.art.facs.objects.FactionPlayer;
 import net.dev.art.grupos.api.GruposAPI;
 import net.dev.art.rank.Rank;
 import net.dev.art.rank.RanksAPI;
@@ -74,8 +77,8 @@ public class Main extends JavaPlugin {
 			public void run() {
 				if (!tabEnable)
 					return;
-				new TabList("§b§lArtTAblist \n §eVenha se divertir conosco!",
-						"§aAcesse meu site: \n §bwww.zartur-dev.com").sendTab();
+				new TabList("§b§lArtTAblist \n §eVenha se divertir conosco!", "§aAcesse meu site: \n §bwww.artstore.tk")
+						.sendTab();
 			}
 		}.runTaskTimer(this, 20, 20);
 
@@ -103,19 +106,41 @@ public class Main extends JavaPlugin {
 			barra = "§7Nenhum";
 		}
 
-		b.definirLinha("§bNick: §e" + p.getName(), 15);
-		b.definirLinha("§bRank: " + rankname, 14);
-		b.definirLinha("§bProgresso: §b" + barra, 13);
-		b.definirLinha("§bGrupo: " + GruposAPI.getGrupo(p.getName()).getPrefix(), 12);
-		b.definirLinha("§1  ", 11);
-		b.definirLinha("§bCoins: §e" + CoinsAPI.getCoinsFormatado(p), 10);
-		b.definirLinha("§bCash: §e" + CashAPI.getCashFormatado(p), 9);
-		b.definirLinha("§9 ", 8);
-		b.definirLinha("§bClan: §7Sem Clan", 7);
-		b.definirLinha("§b", 6);
-		b.definirLinha("§bOnline: §1" + onl + "§8/§4" + off, 5);
-		b.definirLinha("§asite.com.br", 4);
+		String fc = "";
+		FactionPlayer player = PlayersManager.getPlayer(p.getName());
+		Faction fac = null;
+		String banco;
+		String cargo = "";
+		String online = "";
+		if (player.hasFaction()) {
+			fac = PlayersManager.getPlayer(p.getName()).getFac();
+			String tag = "[" + fac.getTag() + "]";
+			String nome = fac.getNome();
+			fc = nome;
+			banco = "" + fac.getBanco();
+			cargo = "<" + player.getCargo().getSimbolo() + "> " + player.getCargo().getNome();
+			online = (fac.getOnlineMembers() != null) ? "§a" + fac.getOnlineMembers().size() + "§7/§f10" : "§a0" + "§7/§f10";
+		} else {
+			fc = "Sem Facçao";
+			banco = "--/--";
+			cargo = "--/--";
+			online = "--/--";
+		}
 
+		b.definirLinha(" " + "§bNick: §e" + p.getName(), 15);
+		b.definirLinha(" " + "§bRank: " + rankname, 14);
+		b.definirLinha(" " + "§bProgresso: §b" + barra, 13);
+		b.definirLinha(" " + "§bGrupo: " + GruposAPI.getGrupo(p.getName()).getPrefix(), 12);
+		b.definirLinha(" " + "§1  ", 11);
+		b.definirLinha(" " + "§bCoins: §e" + CoinsAPI.getCoinsFormatado(p), 10);
+		b.definirLinha(" " + "§bCash: §e" + CashAPI.getCashFormatado(p), 9);
+		b.definirLinha(" " + "§9 ", 8);
+		b.definirLinha(" " + "§bFac: §7" + fc, 7);
+		b.definirLinha(" " + "§f » §7Banco: §f" + banco, 6);
+		b.definirLinha(" " + "§f » §7Cargo: §f" + cargo, 5);
+		b.definirLinha(" " + "§f » §7Online: §f" + online, 4);
+		b.definirLinha(" " + "§6 ", 3);
+		b.definirLinha(" " + "§asite.com.br", 2);
 		b.enviar();
 //		p.sendMessage(new ProgressBar(CoinsAPI.getCoins(p), nextrank.getPrice()).getBar());
 	}

@@ -270,7 +270,9 @@ public class Main extends JavaPlugin implements Listener {
 							+ (r.getPrice() - CoinsAPI.getCoins(p)));
 					return;
 				}
-				CoinsAPI.removeCoins(p, r.getPrice());
+				
+				CoinsAPI.removerCoins(p, r.getPrice());
+				
 				RanksAPI.RankUP(p.getName());
 				spawnFogos(p);
 				spawnFogos(p);
