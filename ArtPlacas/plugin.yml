@@ -1,0 +1,7 @@
+name: ArtSigns
+version: 0.0.1
+main: net.dev.art.sign.Main
+author: arturpttp
+
+commands:
+

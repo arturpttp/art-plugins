@@ -1,0 +1,7 @@
+name: ArtFactions
+version: 0.0.1
+main: net.dev.art.factions.Main
+author: arturpttp
+
+commands:
+

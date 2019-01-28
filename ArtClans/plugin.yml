@@ -1,0 +1,6 @@
+name: ArtClans
+version: 0.0.1
+main: net.dev.art.clans.Main
+author: arturpttp
+
+commands:

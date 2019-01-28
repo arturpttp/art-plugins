@@ -1,0 +1,7 @@
+name: ArtAutenticador
+version: 2.0
+main: net.dev.art.aut2.Main
+author: arturpttp
+
+commands:
+

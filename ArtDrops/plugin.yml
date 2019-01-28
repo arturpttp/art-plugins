@@ -1,0 +1,7 @@
+name: ArtDrops
+version: 0.0.1
+main: net.dev.art.drops.Main
+author: arturpttp
+
+commands:
+

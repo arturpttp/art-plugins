@@ -1,0 +1,23 @@
+Padrao:
+ PoderInicial: 5
+ PoderMaxInicial: 5
+ PoderMaxLimite: 15
+ MaximoMembrosEmFac: 15
+Geral:
+ TempoParaRecuperarPoder: 10 #Em 10 minutos, o player recupera um de poder
+ PerderPoderPorMorte: 2
+ ProtegerTemporariamentePreco: 20000
+ TempoDeProtecaoTemporaria: 20 #Em minutos
+Top:
+ Spawners: #Valor dos spawners
+  COW: 50000
+  SPIDER: 100000
+  ZOMBIE: 15000
+  SKELETON: 200000
+  BLAZE: 500000
+  PIG_ZOMBIE: 750000
+  IRON_GOLEM: 1000000
+SobAtaque:
+ BloquearQuebrarBlocos: #Id dos itens que não podem ser quebrados durante invasão
+  - "138"
+  - "52"

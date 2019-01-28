@@ -1,0 +1,7 @@
+name: ArtRPG
+version: 0.0.1
+main: net.dev.art.rpg.Main
+author: arturpttp
+
+commands:
+
