@@ -75,6 +75,7 @@ public class Main extends ArtPlugin {
 		playersCF.saveDefaultConfig();
 		config = new Configs("config.yml", this);
 		config.saveDefaultConfig();
+		/* Database/MySQL */
 		db = new DBManager("root", "", "localhost", "artplugins");
 		db.openConnection();
 		try {
@@ -98,7 +99,7 @@ public class Main extends ArtPlugin {
 	public void aoIniciar() {
 		startVariables();
 		autoRegister(instance, "net.dev.art.facs");
-		Bukkit.getScheduler().runTask(this, () -> {
+		Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
 			loadPlayers();
 			loadFacs();
 		});

@@ -119,7 +119,8 @@ public class Main extends JavaPlugin {
 			fc = nome;
 			banco = "" + fac.getBanco();
 			cargo = "<" + player.getCargo().getSimbolo() + "> " + player.getCargo().getNome();
-			online = (fac.getOnlineMembers() != null) ? "§a" + fac.getOnlineMembers().size() + "§7/§f10" : "§a0" + "§7/§f10";
+			online = (fac.getOnlineMembers() != null) ? "§a" + fac.getOnlineMembers().size() + "§7/§f10"
+					: "§a0" + "§7/§f10";
 		} else {
 			fc = "Sem Facçao";
 			banco = "--/--";
@@ -127,20 +128,21 @@ public class Main extends JavaPlugin {
 			online = "--/--";
 		}
 
-		b.definirLinha(" " + "§bNick: §e" + p.getName(), 15);
-		b.definirLinha(" " + "§bRank: " + rankname, 14);
-		b.definirLinha(" " + "§bProgresso: §b" + barra, 13);
-		b.definirLinha(" " + "§bGrupo: " + GruposAPI.getGrupo(p.getName()).getPrefix(), 12);
-		b.definirLinha(" " + "§1  ", 11);
-		b.definirLinha(" " + "§bCoins: §e" + CoinsAPI.getCoinsFormatado(p), 10);
-		b.definirLinha(" " + "§bCash: §e" + CashAPI.getCashFormatado(p), 9);
-		b.definirLinha(" " + "§9 ", 8);
-		b.definirLinha(" " + "§bFac: §7" + fc, 7);
-		b.definirLinha(" " + "§f » §7Banco: §f" + banco, 6);
-		b.definirLinha(" " + "§f » §7Cargo: §f" + cargo, 5);
-		b.definirLinha(" " + "§f » §7Online: §f" + online, 4);
-		b.definirLinha(" " + "§6 ", 3);
-		b.definirLinha(" " + "§asite.com.br", 2);
+		b.definirLinha("§e ", 15);
+		b.definirLinha("  " + "§bRank: " + rankname, 14);
+		b.definirLinha("  " + "§bProgresso: §b" + barra, 13);
+		b.definirLinha("  " + "§bGrupo: " + GruposAPI.getGrupo(p.getName()).getPrefix(), 12);
+		b.definirLinha("§1  ", 11);
+		b.definirLinha("  " + "§bFac: §7" + fc, 10);
+		b.definirLinha("  " + "§f » §7Banco: §f" + banco, 9);
+		b.definirLinha("  " + "§f » §7Cargo: §f" + cargo, 8);
+		b.definirLinha("  " + "§f » §7Online: §f" + online, 7);
+		b.definirLinha("  " + "§6 ", 6);
+		b.definirLinha("  " + "§bCoins: §e" + CoinsAPI.getCoinsFormatado(p), 5);
+		b.definirLinha("  " + "§bCash: §e" + CashAPI.getCashFormatado(p), 4);
+		b.definirLinha("§9 ", 3);
+		b.definirLinha("  " + "§asite.com.br", 2);
+		b.definirLinha(" §8  ", 1);
 		b.enviar();
 //		p.sendMessage(new ProgressBar(CoinsAPI.getCoins(p), nextrank.getPrice()).getBar());
 	}

@@ -8,13 +8,35 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.bukkit.Bukkit;
+
+import net.dev.art.core.utils.ArtLib;
 import net.dev.art.facs.Main;
 import net.dev.art.facs.objects.Faction;
 import net.dev.art.facs.objects.FactionPlayer;
 
-public class MySQLManager {
+public class MySQLManager implements ArtLib {
 
 	public static Connection con = Main.getInstance().db.getConnection();
+
+	public static void deleteFaction(String fac) {
+		PreparedStatement stm = null;
+		try {
+			stm = con.prepareStatement("DELETE FROM `factionfacdb` WHERE name='" + fac + "'");
+			stm.setString(1, fac);
+			ResultSet rs = stm.executeQuery();
+			if (rs.next()) {
+				Main.factions.remove(fac);
+				if (debug) {
+					Bukkit.getConsoleSender().sendMessage("§a[DEBUG] §8» §cDeletando facção: §e" + fac);
+				}
+			}
+		} catch (SQLException e) {
+			if (debug) {
+				Bukkit.getConsoleSender().sendMessage("§a[DEBUG] §8» §cERRO ao tentar deletar facção: §e" + fac);
+			}
+		}
+	}
 
 	public static boolean contains(String from, String where, String obj) {
 		PreparedStatement stm = null;
