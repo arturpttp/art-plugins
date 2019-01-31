@@ -4,8 +4,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import net.dev.art.core.managers.ArtCommand;
+import net.dev.art.eco.apis.CoinsAPI;
 import net.dev.art.facs.Main;
 import net.dev.art.facs.enums.Cargo;
+import net.dev.art.facs.manager.MySQLManager;
 import net.dev.art.facs.menus.FactionsMenu;
 import net.dev.art.facs.menus.HasFactionMenu;
 import net.dev.art.facs.objects.FactionPlayer;
@@ -31,7 +33,8 @@ public class FactionsCommand extends ArtCommand {
 
 		} else {
 			String sc = args[0];
-			if (!sc.equalsIgnoreCase("info") && !sc.equalsIgnoreCase("criar") && !sc.equalsIgnoreCase("desfazer")) {
+			if (!sc.equalsIgnoreCase("info") && !sc.equalsIgnoreCase("criar") && !sc.equalsIgnoreCase("depositar")
+					&& !sc.equalsIgnoreCase("retirar") && !sc.equalsIgnoreCase("desfazer")) {
 				mensagem(p, "§cDigite: §f/f§7 -> §cdepois clique em §f`Ajuda`");
 				return true;
 			}
@@ -57,6 +60,71 @@ public class FactionsCommand extends ArtCommand {
 				p.closeInventory();
 				return true;
 			}
+			if (sc.equalsIgnoreCase("depositar")) {
+				if (args.length < 2) {
+					p.sendMessage("§c/f depositar <qnt>");
+					return true;
+				}
+				if (args[1].equalsIgnoreCase("NaN")) {
+					p.sendMessage("§cOpa, Opa, Opa, tentando roubar maninho...?!");
+					return true;
+				}
+				FactionPlayer fp = Main.players.get(p.getName());
+				double qnt = 0D;
+				try {
+					qnt = Double.valueOf(args[1]);
+				} catch (NumberFormatException e) {
+					p.sendMessage("§cUse um numero correto");
+				}
+				if (!fp.hasFaction()) {
+					p.sendMessage("§cVoce precisa estar em uma facção!");
+					return true;
+				}
+
+				if (CoinsAPI.getCoins(p.getName()) < qnt) {
+					p.sendMessage("§cVocê não tem `§f" + args[1] + "§c` coins suficientes.");
+					return true;
+				}
+
+				fp.getFac().depositar(qnt);
+
+				return true;
+			}
+
+			if (sc.equalsIgnoreCase("retirar")) {
+				if (args.length < 2) {
+					p.sendMessage("§c/f depositar <qnt>");
+					return true;
+				}
+				if (args[1].equalsIgnoreCase("NaN")) {
+					p.sendMessage("§cOpa, Opa, Opa, tentando roubar maninho...?!");
+					return true;
+				}
+				FactionPlayer fp = Main.players.get(p.getName());
+				if (fp.getCargo() == Cargo.Membro || fp.getCargo() == Cargo.Recruta) {
+					p.sendMessage("§cApenas jogadores com cargo acima de CAPITÃO podem retorar coins da facção.");
+					return true;
+				}
+				double qnt = 0D;
+				try {
+					qnt = Double.valueOf(args[1]);
+				} catch (NumberFormatException e) {
+					p.sendMessage("§cUse um numero correto");
+				}
+				if (!fp.hasFaction()) {
+					p.sendMessage("§cVoce precisa estar em uma facção!");
+					return true;
+				}
+
+				if (fp.getFac().getBanco() == 0) {
+					p.sendMessage("§cVocê não pode deixar o banco da facção em menos de zero!");
+					return true;
+				}
+
+				fp.getFac().retirar(qnt);
+
+				return true;
+			}
 			if (sc.equalsIgnoreCase("desfazer")) {
 				FactionPlayer fp = Main.players.get(p.getName());
 				if (!fp.hasFaction()) {
@@ -67,6 +135,19 @@ public class FactionsCommand extends ArtCommand {
 					p.sendMessage("§cVoce não é o lider da facção!");
 					return true;
 				}
+
+				if (fp.getFac().getBanco() > 0) {
+					p.sendMessage("§cRetire todo o dinheiro do banco de sua facção!");
+					return true;
+				}
+				
+				fp.getFac().broadcast("§cFacção Deletada!");
+				p.closeInventory();
+				p.sendMessage("§aFacção deletada com sucesso!");
+				broadcast("§cFacção `§f" + fp.getFaction() + "§c` foi deletada.");
+
+				MySQLManager.deleteFaction(fp.getFaction());
+				fp.setFaction(null);
 
 				return true;
 			}

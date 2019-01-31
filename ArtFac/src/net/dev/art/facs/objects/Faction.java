@@ -40,11 +40,11 @@ public class Faction {
 		ID = iD;
 	}
 
-	public void addMoney(double qnt) {
+	public void depositar(double qnt) {
 		setBanco(getBanco() + qnt);
 	}
 
-	public void removeMoney(double qnt) {
+	public void retirar(double qnt) {
 		setBanco(getBanco() - qnt);
 	}
 
