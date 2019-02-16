@@ -10,6 +10,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import net.dev.art.api.APIs.FormatarAPI;
 import net.dev.art.core.objects.ProgressBar;
 import net.dev.art.eco.apis.CashAPI;
 import net.dev.art.eco.apis.CoinsAPI;
@@ -117,7 +118,11 @@ public class Main extends JavaPlugin {
 			String tag = "[" + fac.getTag() + "]";
 			String nome = fac.getNome();
 			fc = nome;
-			banco = "" + fac.getBanco();
+			if (fac.getBanco() <= 999999) {
+				banco = "" + fac.getBanco();
+			} else {
+				banco = FormatarAPI.doubleFormatado(fac.getBanco());
+			}
 			cargo = "<" + player.getCargo().getSimbolo() + "> " + player.getCargo().getNome();
 			online = (fac.getOnlineMembers() != null) ? "§a" + fac.getOnlineMembers().size() + "§7/§f10"
 					: "§a0" + "§7/§f10";

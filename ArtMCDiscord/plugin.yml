@@ -1,0 +1,7 @@
+name: ArtMCDiscord
+version: 0.0.1
+main: net.dev.art.mcd.Main
+author: arturpttp
+
+commands:
+

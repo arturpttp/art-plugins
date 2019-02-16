@@ -1,0 +1,6 @@
+name: Atributos
+main: me.micael.atributos.Main
+version: 1.0
+depend: [CursoApis]
+commands:
+  atributos:

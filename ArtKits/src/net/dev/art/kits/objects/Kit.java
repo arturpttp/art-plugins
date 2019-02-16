@@ -1,37 +1,37 @@
 package net.dev.art.kits.objects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.inventory.ItemStack;
 
 public class Kit {
 
-	String name;
-	int delay;
-	List<ItemStack> itens;
-	String grupo;
-	
-	public Kit(String name, int delay, List<ItemStack> itens, String grupo) {
+	private String name, grupo;
+	private List<ItemStack> itens = new ArrayList<>();
+	private long delay;
+
+	public Kit(String name, String grupo, List<ItemStack> itens, long delay) {
 		this.name = name;
-		this.delay = delay;
-		this.itens = itens;
 		this.grupo = grupo;
+		this.itens = itens;
+		this.delay = delay;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public String getGrupo() {
 		return grupo;
 	}
-	
-	public int getDelay() {
-		return delay;
-	}
-	
+
 	public List<ItemStack> getItens() {
 		return itens;
 	}
-	
-	public String getName() {
-		return name;
+
+	public long getDelay() {
+		return delay;
 	}
-	
+
 }

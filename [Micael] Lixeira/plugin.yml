@@ -1,0 +1,7 @@
+name: MasterLixeira
+version: 0.1
+author: zArturDev_
+main: net.dev.art.dbc.lx.Main
+
+commands: 
+  lixeira:

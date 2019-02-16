@@ -23,7 +23,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import net.dev.art.essentials.apis.Configs;
 import net.dev.art.essentials.apis.SkinAPI;
 import net.dev.art.essentials.commands.AvisoAnuncio;
-import net.dev.art.essentials.commands.Build;
 import net.dev.art.essentials.commands.CasaCommands;
 import net.dev.art.essentials.commands.Clear;
 import net.dev.art.essentials.commands.Duvidas;
@@ -213,9 +212,6 @@ public class Main extends JavaPlugin {
 
 		getCommand("staff").setExecutor(new StaffManager());
 		e.registerEvents(new StaffManager(), getInstance());
-
-		getCommand("build").setExecutor(new Build());
-		e.registerEvents(new BuildEvents(), this);
 
 		e.registerEvents(new KitsManager(), getInstance());
 		e.registerEvents(new CommandBlock(), getInstance());

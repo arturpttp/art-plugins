@@ -1,5 +1,6 @@
 package net.dev.art.facs.objects;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,7 @@ public class FactionPlayer {
 	private String name, faction, ID;
 	private int kills, deaths, power, maxPower;
 	private long online = 0L;
+	private List<String> convites = new ArrayList<>();
 
 	public FactionPlayer(String ID, String name, String faction, int kills, int deaths, int power, int maxPower) {
 		this.faction = faction;
@@ -23,6 +25,10 @@ public class FactionPlayer {
 		this.maxPower = maxPower;
 		this.name = name;
 		this.ID = ID;
+	}
+
+	public List<String> getConvites() {
+		return convites;
 	}
 
 	public String getID() {

@@ -1,0 +1,12 @@
+Kits:
+  Basico:
+    Delay: 300000
+    Grupo: 'Membro'
+    Itens: 
+      - '272;&a&lItem Basico;null;1;null'
+      - '273;&a&lItem Basico;null;1;null'
+      - '275;&a&lItem Basico;null;1;null'
+      - '050;&a&lItem Basico;null;1;null'
+      - '274;&a&lItem Basico;null;32;null'
+Delay: 
+  arturpttp: 23446551

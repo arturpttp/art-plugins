@@ -1,0 +1,7 @@
+name: ArtEco
+version: 0.0.1
+main: net.dev.art.econ.Main
+author: arturpttp
+
+commands:
+

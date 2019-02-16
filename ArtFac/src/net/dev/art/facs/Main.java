@@ -56,6 +56,12 @@ public class Main extends ArtPlugin {
 	@Override
 	public void aoCarregar() {
 
+//		for (Player p : Bukkit.getOnlinePlayers()) {
+//			if (p.getOpenInventory() == null) {
+//				p.openInventory(Bukkit.createInventory(null, 9 * 1, "Titulo"));
+//			}
+//		}
+
 	}
 
 	private void startVariables() {
