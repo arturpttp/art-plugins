@@ -40,28 +40,31 @@ public class Faction {
 		ID = iD;
 	}
 
-	public void addMoney(double qnt) {
+	public void depositar(double qnt) {
 		setBanco(getBanco() + qnt);
 	}
 
-	public void removeMoney(double qnt) {
+	public void retirar(double qnt) {
 		setBanco(getBanco() - qnt);
 	}
 
 	public List<String> getAllMembers() {
 		List<String> members = new ArrayList<>();
 		members.add(lider);
-		for (String c : capitoes) {
-			members.add(c);
-		}
-		for (String m : membros) {
-			members.add(m);
+		if (capitoes.size() > 0)
+			for (String c : capitoes) {
+				members.add(c);
+			}
+		if (membros.size() > 0)
+			for (String m : membros) {
+				members.add(m);
 
-		}
-		for (String r : recrutas) {
-			members.add(r);
+			}
+		if (recrutas.size() > 0)
+			for (String r : recrutas) {
+				members.add(r);
 
-		}
+			}
 		return members;
 	}
 

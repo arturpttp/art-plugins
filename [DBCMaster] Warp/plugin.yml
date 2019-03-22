@@ -1,0 +1,10 @@
+name: MasterWarps
+version: 0.1
+author: zArturDev_
+main: net.dev.art.dbc.warp.Main
+
+commands: 
+  setwarp:
+  delwarp:
+  warps:
+  warp:

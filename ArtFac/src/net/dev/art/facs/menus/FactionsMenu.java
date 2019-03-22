@@ -17,6 +17,7 @@ public class FactionsMenu extends Menu {
 	public FactionsMenu() {
 		super("§7Suas informações", MenuSize.FIVE_LINES);
 		addItems();
+		fakeOpenCommand("FWithoutMenu");
 	}
 
 	private void addItems() {

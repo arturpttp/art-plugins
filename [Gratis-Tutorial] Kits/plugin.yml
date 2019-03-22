@@ -1,0 +1,8 @@
+name: ArtKits
+version: 1.0
+authors: [zArturDev]
+depend: [ArtCore]
+
+main: net.dev.art.kits.Main
+
+commands:

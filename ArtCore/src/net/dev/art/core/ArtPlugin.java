@@ -2,6 +2,7 @@ package net.dev.art.core;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -42,6 +43,7 @@ public abstract class ArtPlugin extends JavaPlugin implements Listener, ArtLib {
 	@Override
 	public void onLoad() {
 		aoCarregar();
+		
 	}
 
 	public void reload(ArtPlugin pl) {

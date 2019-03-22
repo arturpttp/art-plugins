@@ -1,0 +1,7 @@
+name: NNTTeste
+version: 0.0.1
+main: net.dev.art.nnt.Main
+author: arturpttp
+
+commands:
+

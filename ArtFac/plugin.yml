@@ -2,6 +2,7 @@ name: ArtFac
 version: 0.0.1
 main: net.dev.art.facs.Main
 author: arturpttp
+depend: [ArtEconomia]
 
 commands:
 

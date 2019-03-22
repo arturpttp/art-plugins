@@ -1,0 +1,7 @@
+name: ArtCore
+version: 1.0
+authors: [zArturDev]
+
+main: net.dev.art.tuto.ArtCore
+
+commands:

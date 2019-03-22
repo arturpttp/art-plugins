@@ -1,0 +1,12 @@
+Settings:  
+  Prefix: '&bPrefix&8 » '
+Mesagens:
+  setWarp: '&aWarp &f$warp&a foi setada com sucesso.'
+  existeWarp: '&cEssa warp já existe, utilize outro nome.'
+  noExisteWarp: '&cWarp invalida.'
+  delWarp: '&aWarp &f$warp &aDeletada com sucesso.'
+  warpTeleport: '&aTeleportado para &f$warp &acom sucesso.'
+  warpList: '&aWarps: &f$warps'
+  noPlayer: '&cComando apenas para players!'
+  insuficientArgs: '&cUtilize: &f$command&c.'
+  noPerm: '&cVocê não tem permissao para isso!'

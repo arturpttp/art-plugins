@@ -10,7 +10,6 @@ import net.dev.art.utils.commands.RemoveStands;
 import net.dev.art.utils.drops.DropsManager;
 import net.dev.art.utils.events.AdminEvents;
 import net.dev.art.utils.events.MobstackEvent;
-import net.dev.art.utils.events.PickUP;
 
 public class Main extends ArtPlugin {
 
@@ -73,7 +72,6 @@ public class Main extends ArtPlugin {
 		setCommand("reiniciar", new RemoveStands());
 		setCommand("admin", new AdminCommand());
 		setEvent(new AdminEvents());
-		setEvent(new PickUP());
 	}
 
 	@Override

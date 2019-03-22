@@ -82,8 +82,8 @@ public class MainEvents implements Listener, ArtLib {
 					FactionsMenu.criar_fac.remove(p.getName());
 					return;
 				}
-				if (tamanho > 10) {
-					p.sendMessage("§cO nome da facção deve conter no maximo 10 letras!");
+				if (tamanho > 16) {
+					p.sendMessage("§cO nome da facção deve conter no maximo 16 letras!");
 					return;
 				} else if (tamanho <= 3) {
 					p.sendMessage("§cO nome da facção deve conter no minimo 4 letras!");
@@ -127,16 +127,16 @@ public class MainEvents implements Listener, ArtLib {
 				FactionsMenu.tag.put(p.getName(), e.getMessage());
 
 				Menu inv = new Menu("§fCriar a facção", MenuSize.THREE_LINES);
-				ArtItem confirmar = new ArtItem(Material.WOOL).setData((short) 5).nome("§2Confirmar").lore(
-						"§aSim desejo criar a facção",
-						"§f[" + FactionsMenu.tag.get(p.getName()) + "] §f" + FactionsMenu.nome.get(p.getName()) + "");
+				ArtItem confirmar = new ArtItem(Material.WOOL).setData((short) 5).nome("§2Confirmar")
+						.lore("§aSim desejo criar a facção", "§f[" + FactionsMenu.tag.get(p.getName()).toUpperCase()
+								+ "] §f" + FactionsMenu.nome.get(p.getName()) + "");
 				ArtItem negar = new ArtItem(Material.WOOL).setData((short) 14).nome("§4Cancelar operação")
 						.lore("§cNão, não quero criar a facção");
 				inv.setItem(11, confirmar, new MenuItemClick() {
 					public void onClick(InventoryClickEvent e) {
 						FactionsMenu.criar_fac.remove(p.getName());
-						FactionsManager.newFac(FactionsMenu.nome.get(p.getName()), FactionsMenu.tag.get(p.getName()),
-								p.getName());
+						FactionsManager.newFac(FactionsMenu.nome.get(p.getName()),
+								FactionsMenu.tag.get(p.getName()).toUpperCase(), p.getName());
 						e.getWhoClicked().closeInventory();
 						p.sendMessage("§aFacção criada com sucesso!");
 						Main.getInstance().playersCF.saveConfig();

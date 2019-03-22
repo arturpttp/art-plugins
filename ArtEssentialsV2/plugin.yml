@@ -1,0 +1,7 @@
+name: ArtUtilidades
+version: 0.0.1
+main: net.dev.art.utilidades.Main
+author: arturpttp
+
+commands:
+

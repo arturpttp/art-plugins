@@ -21,21 +21,22 @@ public class MySQLManager implements ArtLib {
 
 	public static void deleteFaction(String fac) {
 		PreparedStatement stm = null;
+
 		try {
-			stm = con.prepareStatement("DELETE FROM `factionfacdb` WHERE name='" + fac + "'");
+			stm = con.prepareStatement("DELETE FROM `factionfacdb` WHERE name=?");
 			stm.setString(1, fac);
-			ResultSet rs = stm.executeQuery();
-			if (rs.next()) {
-				Main.factions.remove(fac);
-				if (debug) {
-					Bukkit.getConsoleSender().sendMessage("§a[DEBUG] §8» §cDeletando facção: §e" + fac);
-				}
+			Main.factions.remove(fac);
+			if (debug) {
+				Bukkit.getConsoleSender().sendMessage("§a[DEBUG] §8» §cDeletando facção: §e" + fac);
 			}
+			stm.executeUpdate();
+			stm.close();
 		} catch (SQLException e) {
 			if (debug) {
 				Bukkit.getConsoleSender().sendMessage("§a[DEBUG] §8» §cERRO ao tentar deletar facção: §e" + fac);
 			}
 		}
+
 	}
 
 	public static boolean contains(String from, String where, String obj) {

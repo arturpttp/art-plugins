@@ -1,0 +1,8 @@
+name: ArtTemplate
+version: 1.0
+authors: [zArturDev]
+depend: [ArtCore]
+
+main: net.dev.art.template.Main
+
+commands:

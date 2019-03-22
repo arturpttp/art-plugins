@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -15,6 +16,9 @@ import org.bukkit.plugin.Plugin;
 public class Menu {
 	private final String name;
 	private MenuItem[] items;
+	private String command = "NoCommands";
+	Inventory inventory;
+	private boolean pagination = false;
 
 	/**
 	 * Create a new menu
@@ -38,6 +42,14 @@ public class Menu {
 		items = new MenuItem[size.getSlots()];
 	}
 
+	public void setPagination(boolean pagination) {
+		this.pagination = pagination;
+	}
+	
+	public boolean isPagination() {
+		return pagination;
+	}
+	
 	/**
 	 * Register the Menu Listener
 	 *
@@ -49,6 +61,19 @@ public class Menu {
 			private void onInvClick(InventoryClickEvent e) {
 				if (!e.isCancelled() && e.getInventory().getHolder() instanceof MenuHolder)
 					((MenuHolder) e.getInventory().getHolder()).getMenu().inventoryClick(e);
+			}
+
+			@EventHandler
+			private void onFakeCmd(PlayerCommandPreprocessEvent e) {
+				if (command.equalsIgnoreCase("NoCommands"))
+					return;
+				String cmd = e.getMessage();
+				if (e.getMessage().contains(" ")) {
+					cmd = e.getMessage().split(" ")[0];
+				}
+				if (cmd.startsWith("/" + getCommand())) {
+					open(e.getPlayer());
+				}
 			}
 		}, plugin);
 	}
@@ -84,6 +109,10 @@ public class Menu {
 		items[slot] = menuItem;
 	}
 
+	public Inventory getInventory() {
+		return inventory;
+	}
+
 	/**
 	 * Open the menu to some {@link org.bukkit.entity.HumanEntity}, it can be a
 	 * {@link Player}
@@ -92,7 +121,7 @@ public class Menu {
 	 */
 	public void open(HumanEntity humanEntity) {
 		MenuHolder holder = new MenuHolder(this);
-		Inventory inventory = Bukkit.createInventory(holder, items.length, name);
+		this.inventory = Bukkit.createInventory(holder, items.length, name);
 		holder.setInventory(inventory);
 
 		for (int i = 0; i < this.items.length; ++i) {
@@ -147,6 +176,19 @@ public class Menu {
 		ItemStack getIcon() {
 			return icon;
 		}
+	}
+
+	public void fakeOpenCommand(String cmd) {
+		setCommand(cmd);
+		;
+	}
+
+	public void setCommand(String command) {
+		this.command = command;
+	}
+
+	public String getCommand() {
+		return command;
 	}
 
 	private class MenuHolder implements InventoryHolder {
