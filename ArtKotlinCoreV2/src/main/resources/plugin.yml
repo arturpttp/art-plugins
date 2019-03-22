@@ -1,0 +1,3 @@
+name: ArtKotlinCore
+version: ${project.version}
+main: net.dev.art.kotlin.core.artkotlincore.ArtKotlinCore

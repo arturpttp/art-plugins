@@ -1,0 +1,5 @@
+name: ArtKTCore
+version: @version@
+main: net.dev.art.core.artktcore.ArtKTCore
+authors: [zArturDev]
+description: Um plugin base para outros em kt

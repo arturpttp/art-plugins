@@ -1,0 +1,5 @@
+name: ArtCoreKotlin
+version: 1.0-SNAPSHOT
+main: net.dev.art.kt.core.Main
+prefix: [ArtKotlinCore]
+authors: [zArturDev, arturpttp]

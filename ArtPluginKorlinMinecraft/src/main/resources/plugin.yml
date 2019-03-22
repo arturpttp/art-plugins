@@ -1,0 +1,5 @@
+name: ArtKotlinPlugins
+version: ${project.version}
+main: net.dev.art.pl.artkotlinplugins.Main
+prefix: [ArtPlugin]
+authors: [zArturDev_]

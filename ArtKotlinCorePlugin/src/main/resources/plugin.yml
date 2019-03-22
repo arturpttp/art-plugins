@@ -1,0 +1,4 @@
+name: ArtKotlinCorePlugin
+version: ${project.version}
+main: net.dev.art.kt.artkotlincoreplugin.ArtKotlinCorePlugin
+authors: [zArturDev]
